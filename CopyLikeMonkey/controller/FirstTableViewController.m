@@ -9,15 +9,22 @@
 #import "FirstTableViewController.h"
 #import "FirstTableViewCell.h"
 #import "TestObject.h"
+#import "HeaderSegmentControl.h"
 
 
 
 
 @interface FirstTableViewController ()<UITableViewDelegate,UITableViewDataSource>{
     UITableView *tableView;
+    UITableView *tableView2;
+    UITableView *tableView3;
     YiRefreshHeader *header;
+    YiRefreshHeader *header2;
+    YiRefreshHeader *header3;
+    HeaderSegmentControl *headerControll;
     float bgViewHeight;
 }
+@property(strong,nonatomic)  UIScrollView *scrollView;
 @property(strong,nonatomic) NSMutableArray<UserModel*> *data;
 
 @end
@@ -26,14 +33,77 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //解决如果根view是scrollview的时候给scrollview添加view的时候会向下偏移64px的问题
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor redColor];
+    [self initMainView];
+    
+}
+-(void) initMainView{
     //减去了顶部标题+状态栏+底部tabbar的高度
-    bgViewHeight = ScreenHeight - 64 - 49;
-    tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, bgViewHeight) style:UITableViewStylePlain];
-    [self.view addSubview:tableView];
+    
+    [self initHeaderControll];
+//                                  contrl.initWithFrame:CGRectMake(0, 35, ScreenWidth, 35)];
+    bgViewHeight = ScreenHeight - 35 - 64 - 49;
+    [self initScrollView];
+    [self initTableView];
+    [self initTableView2];
+    [self initTableView3];
+}
+-(void)initHeaderControll
+{
+    headerControll = [[HeaderSegmentControl alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, 35)];
+    [self.view addSubview:headerControll];
+    __weak typeof(self) weakSelf2 = self;
+    headerControll.ClickBlock = ^(NSInteger clickIndex){
+        __strong typeof(self) strongSelf2 = weakSelf2;
+           [strongSelf2.scrollView setContentOffset:CGPointMake(ScreenWidth*clickIndex, 0) animated:YES];
+        [strongSelf2 onTabClick:clickIndex];
+    };
+}
+-(void)onTabClick:(NSInteger) clickIndex{
+    switch (clickIndex) {
+        case 0:
+            [header beginRefreshing];
+            break;
+        case 1:
+            [header2 beginRefreshing];
+            break;
+        case 2:
+            [header3 beginRefreshing];
+            break;
+            
+        default:
+            break;
+    }
+}
+-(void)initScrollView{
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64+35, ScreenWidth, bgViewHeight)];
+    self.scrollView.alwaysBounceHorizontal = YES;
+    self.scrollView.pagingEnabled=YES;
+    self.scrollView.backgroundColor = [UIColor redColor];
+    self.scrollView.bounces = NO;
+    self.scrollView.delegate = self;
+    self.scrollView.userInteractionEnabled=YES;
+    self.scrollView.showsHorizontalScrollIndicator=NO;
+    self.scrollView.showsVerticalScrollIndicator=NO;
+    
+    [self.scrollView setContentSize:CGSizeMake(ScreenWidth * (4),0)];
+    
+    [self.view addSubview:self.scrollView];
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    [self.scrollView scrollRectToVisible:CGRectMake(0, 0, ScreenWidth, bgViewHeight) animated:NO];
+
+}
+-(void)initTableView{
+    tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    tableView.frame = CGRectMake(0, 0, ScreenWidth, bgViewHeight);
     tableView.delegate = self;
     tableView.dataSource=self;
-//    tableView.rowHeight = 70;
+    tableView.rowHeight = 70;
     header = [[YiRefreshHeader alloc] init];
+    [self.scrollView addSubview:tableView];
     header.scrollView=tableView;
     [header header];
     __weak typeof(self) weakself = self;
@@ -42,89 +112,41 @@
         [strongself requestWithAFNetWork];
     };
     [header beginRefreshing];
-    
 }
-
-//-(void)sendData{
-//    //模拟发送网络请求
-//    
-//    NSURLResponse *response = [[NSURLResponse alloc]init];
-//    NSString *urlStr = @"https://api.github.com/";
-//    NSURL *url = [[NSURL alloc]initWithString:urlStr];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    NSData *data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-//    
-//    NSString *result = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//    
-//    NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil ]);
-//}
-//-(void)sendAsyncData{
-//    
-//    NSString *urlStr = @"https://api.github.com/";
-//    NSURL *url = [[NSURL alloc]initWithString:urlStr];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-//    [NSURLConnection sendAsynchronousRequest:request queue:queue completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-//        if(connectionError){
-//            NSLog(@"%@",connectionError);
-//            NSLog(@"==resq====%@",response);
-//            return;
-//        }
-//        //检验状态码
-//        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-//            if (((NSHTTPURLResponse *)response).statusCode != 200) {
-//                return;
-//            }
-//        }
-//        //解析json
-//        NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil ]);
-//        
-//        NSLog(@"====请求结束====");
-//    }];
-//    
-//}
-//-(void)sendNewRequestWithURLSession{
-//    NSString *urlStr = @"https://api.github.com/";
-//    NSURL *url = [[NSURL alloc]initWithString:urlStr];
-//    NSURLSession *session = [NSURLSession sharedSession];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    NSURLSessionTask *task  = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        if(error){
-//            NSLog(@"%@",error);
-//            NSLog(@"==resq====%@",response);
-//            return;
-//        }
-//        //检验状态码
-//        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
-//            if (((NSHTTPURLResponse *)response).statusCode != 200) {
-//                return;
-//            }
-//        }
-//        SBJson5ValueBlock block = ^(id v, BOOL *stop) {
-//            BOOL isTestObejct = [v isKindOfClass:[NSDictionary class]];
-//            NSLog(isTestObejct ? @"yes":@"no");
-//            TestObject *test = [TestObject mj_objectWithKeyValues:v];
-////            NSLog(@"the object is %@",test.current_user_url);
-////            BOOL isArray = [v isKindOfClass:[NSArray class]];
-////            NSLog(@"Found: %@", isArray ? @"Array" : @"Object");
-//            
-//        };
-//        
-//        SBJson5ErrorBlock eh = ^(NSError* err) {
-//            NSLog(@"OOPS: %@", err);
-//            exit(1);
-//        };
-//        
-//        id parser = [SBJson5Parser parserWithBlock:block
-//                                      errorHandler:eh];
-//        [parser parse:data]; // returns SBJson5ParserWaitingForData
-//        //解析json
-////        NSLog(@"%@",[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil ]);
-//        
-//        NSLog(@"====请求结束====");
-//    }];
-//    [task resume];
-//}
+-(void)initTableView2{
+    tableView2 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    tableView2.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, bgViewHeight);
+    tableView2.delegate = self;
+    tableView2.dataSource=self;
+    tableView2.rowHeight = 70;
+    header2 = [[YiRefreshHeader alloc] init];
+    [self.scrollView addSubview:tableView2];
+    header2.scrollView=tableView2;
+    [header2 header];
+    __weak typeof(self) weakself = self;
+    header2.beginRefreshingBlock = ^(){
+        __strong typeof(self) strongself = weakself;
+        [strongself requestWithAFNetWork];
+    };
+//    [header2 beginRefreshing];
+}
+-(void)initTableView3{
+    tableView3 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    tableView3.frame = CGRectMake(ScreenWidth*2, 0, ScreenWidth, bgViewHeight);
+        tableView2.delegate = self;
+        tableView2.dataSource=self;
+    tableView3.rowHeight = 70;
+    header3 = [[YiRefreshHeader alloc] init];
+    [self.scrollView addSubview:tableView3];
+    header3.scrollView=tableView3;
+    [header3 header];
+    __weak typeof(self) weakself = self;
+    header3.beginRefreshingBlock = ^(){
+        __strong typeof(self) strongself = weakself;
+        [strongself requestWithAFNetWork];
+    };
+//    [header3 beginRefreshing];
+}
 -(void)requestWithAFNetWork{
     
     NSString *urlStr = @"https://api.github.com/search/users?q=tom+repos:%3E42+followers:%3E1000";
@@ -138,10 +160,7 @@
         if (error) {
             NSLog(@"Error: %@", error);
         } else {
-//            NSLog(@"%@ %@", response, responseObject);
-            
             TestObject *test = [TestObject mj_objectWithKeyValues:responseObject];
-//            NSLog(@"the object url is %@",test.items);
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.data = test.items;
                 for (int i=0; i<[self.data count]; i++) {
@@ -149,12 +168,14 @@
                     NSLog(@"the model is %@",[model valueForKey:@"login"]);
                 }
                 [tableView reloadData];
+                [tableView2 reloadData];
+                [tableView3 reloadData];
                 [header endRefreshing];
-            });
+                [header2 endRefreshing];
+                [header3 endRefreshing];
 
-            
-            
-            
+                
+            });
             
         }
     }];
@@ -188,56 +209,15 @@
     cell.title.text = [NSString stringWithFormat:@"%@",[model valueForKey:@"login"]];
     cell.rankLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
     
-//    UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-//    cell.textLabel.text = self.data[indexPath.row];
-    
     return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
-}
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    
+        CGFloat pagewidth = scrollView.frame.size.width;
+        int currentPage = floor((scrollView.contentOffset.x - pagewidth/ (2)) / pagewidth) + 1;
+    
+    [headerControll clickIndex:(currentPage)];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

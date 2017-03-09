@@ -26,6 +26,7 @@
 		A0FEC5A81E70DFE000D90D34 /* down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A0FEC5A31E70DFE000D90D34 /* down@2x.png */; };
 		A0FEC5A91E70DFE000D90D34 /* YiRefreshFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5A51E70DFE000D90D34 /* YiRefreshFooter.m */; };
 		A0FEC5AA1E70DFE000D90D34 /* YiRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5A71E70DFE000D90D34 /* YiRefreshHeader.m */; };
+		A0FEC5AD1E71320000D90D34 /* HeaderSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5AC1E7131FF00D90D34 /* HeaderSegmentControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,8 @@
 		A0FEC5A51E70DFE000D90D34 /* YiRefreshFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRefreshFooter.m; sourceTree = "<group>"; };
 		A0FEC5A61E70DFE000D90D34 /* YiRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiRefreshHeader.h; sourceTree = "<group>"; };
 		A0FEC5A71E70DFE000D90D34 /* YiRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiRefreshHeader.m; sourceTree = "<group>"; };
+		A0FEC5AB1E7131FF00D90D34 /* HeaderSegmentControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderSegmentControl.h; sourceTree = "<group>"; };
+		A0FEC5AC1E7131FF00D90D34 /* HeaderSegmentControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderSegmentControl.m; sourceTree = "<group>"; };
 		C195B7A651B626E39AD8FD6B /* libPods-CopyLikeMonkey.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CopyLikeMonkey.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -168,6 +171,8 @@
 			children = (
 				A0A3DC871E6F8A9000733D95 /* FirstTableViewCell.h */,
 				A0A3DC881E6F8A9000733D95 /* FirstTableViewCell.m */,
+				A0FEC5AB1E7131FF00D90D34 /* HeaderSegmentControl.h */,
+				A0FEC5AC1E7131FF00D90D34 /* HeaderSegmentControl.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				A0FEC5981E6FF10600D90D34 /* UserModel.m in Sources */,
 				A0A3DC821E6ED8D600733D95 /* RankTableViewController.m in Sources */,
 				A0A3DC7E1E6E995000733D95 /* MainController.m in Sources */,
+				A0FEC5AD1E71320000D90D34 /* HeaderSegmentControl.m in Sources */,
 				A0A3DC581E6E8EF900733D95 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
