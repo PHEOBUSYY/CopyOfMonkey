@@ -20,12 +20,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CopyLikeMonkey/controller/FirstTableViewController.m"
-            timestampString = "510741591.611584"
+            timestampString = "510822116.949896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "-initTableView"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "-initTableView3"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CopyLikeMonkey/controller/FirstTableViewController.m"
+            timestampString = "510822116.949896"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-initTableView2"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

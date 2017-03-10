@@ -10,11 +10,11 @@
 #import "FirstTableViewCell.h"
 #import "TestObject.h"
 #import "HeaderSegmentControl.h"
+#import "UIRankDataSource.h"
 
 
 
-
-@interface FirstTableViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface FirstTableViewController ()<UITableViewDelegate>{
     UITableView *tableView;
     UITableView *tableView2;
     UITableView *tableView3;
@@ -23,9 +23,13 @@
     YiRefreshHeader *header3;
     HeaderSegmentControl *headerControll;
     float bgViewHeight;
+    
+    UIRankDataSource *dataSource;
 }
-@property(strong,nonatomic)  UIScrollView *scrollView;
+@property(strong,nonatomic) UIScrollView *scrollView;
 @property(strong,nonatomic) NSMutableArray<UserModel*> *data;
+@property(strong,nonatomic) NSMutableArray<UserModel*> *data2;
+@property(strong,nonatomic) NSMutableArray<UserModel*> *data3;
 
 @end
 
@@ -36,8 +40,13 @@
     //解决如果根view是scrollview的时候给scrollview添加view的时候会向下偏移64px的问题
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor redColor];
+    [self initData];
     [self initMainView];
     
+}
+-(void)initData
+{
+    dataSource = [[UIRankDataSource alloc]init];
 }
 -(void) initMainView{
     //减去了顶部标题+状态栏+底部tabbar的高度
@@ -56,21 +65,30 @@
     [self.view addSubview:headerControll];
     __weak typeof(self) weakSelf2 = self;
     headerControll.ClickBlock = ^(NSInteger clickIndex){
+        
         __strong typeof(self) strongSelf2 = weakSelf2;
-           [strongSelf2.scrollView setContentOffset:CGPointMake(ScreenWidth*clickIndex, 0) animated:YES];
+//       strongSelf2->dataSource.clickIndex = clickIndex;
+       [strongSelf2.scrollView setContentOffset:CGPointMake(ScreenWidth*clickIndex, 0) animated:YES];
         [strongSelf2 onTabClick:clickIndex];
     };
 }
 -(void)onTabClick:(NSInteger) clickIndex{
+    
     switch (clickIndex) {
         case 0:
-            [header beginRefreshing];
+            if([dataSource.dataArray1 count]==0){
+                [header beginRefreshing];
+            }
             break;
         case 1:
-            [header2 beginRefreshing];
+            if([dataSource.dataArray2 count]==0){
+                [header2 beginRefreshing];
+            }
             break;
         case 2:
-            [header3 beginRefreshing];
+            if([dataSource.dataArray3 count]==0){
+                [header3 beginRefreshing];
+            }
             break;
             
         default:
@@ -100,7 +118,7 @@
     tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView.frame = CGRectMake(0, 0, ScreenWidth, bgViewHeight);
     tableView.delegate = self;
-    tableView.dataSource=self;
+    tableView.dataSource=dataSource;
     tableView.rowHeight = 70;
     header = [[YiRefreshHeader alloc] init];
     [self.scrollView addSubview:tableView];
@@ -109,7 +127,17 @@
     __weak typeof(self) weakself = self;
     header.beginRefreshingBlock = ^(){
         __strong typeof(self) strongself = weakself;
-        [strongself requestWithAFNetWork];
+        __weak typeof(self) weak = strongself;
+        [strongself requestWithAFNetWork:0 resultBlock:^(TestObject *testObject) {
+            __strong typeof(self) strong = weak;
+            strong->dataSource.dataArray1 = testObject.items;
+            
+            strong->dataSource.clickIndex = 0;
+            [strong->tableView reloadData];
+            [strong->header endRefreshing];
+            NSLog(@"enter talbe1");
+            
+        }];
     };
     [header beginRefreshing];
 }
@@ -117,7 +145,7 @@
     tableView2 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView2.frame = CGRectMake(ScreenWidth, 0, ScreenWidth, bgViewHeight);
     tableView2.delegate = self;
-    tableView2.dataSource=self;
+    tableView2.dataSource=dataSource;
     tableView2.rowHeight = 70;
     header2 = [[YiRefreshHeader alloc] init];
     [self.scrollView addSubview:tableView2];
@@ -126,15 +154,22 @@
     __weak typeof(self) weakself = self;
     header2.beginRefreshingBlock = ^(){
         __strong typeof(self) strongself = weakself;
-        [strongself requestWithAFNetWork];
+        __weak typeof(self) weak = strongself;
+        [strongself requestWithAFNetWork:1 resultBlock:^(TestObject *testObject) {
+            __strong typeof(self) strong = weak;
+            strong->dataSource.dataArray2 = testObject.items;
+            strong->dataSource.clickIndex = 1;
+            [strong->tableView2 reloadData];
+            [strong->header2 endRefreshing];
+            NSLog(@"enter talbe2");
+        }];
     };
-//    [header2 beginRefreshing];
 }
 -(void)initTableView3{
     tableView3 = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
     tableView3.frame = CGRectMake(ScreenWidth*2, 0, ScreenWidth, bgViewHeight);
-        tableView2.delegate = self;
-        tableView2.dataSource=self;
+    tableView3.delegate = self;
+    tableView3.dataSource=dataSource;
     tableView3.rowHeight = 70;
     header3 = [[YiRefreshHeader alloc] init];
     [self.scrollView addSubview:tableView3];
@@ -142,14 +177,29 @@
     [header3 header];
     __weak typeof(self) weakself = self;
     header3.beginRefreshingBlock = ^(){
+        
         __strong typeof(self) strongself = weakself;
-        [strongself requestWithAFNetWork];
+        __weak typeof(self) weak = strongself;
+        [strongself requestWithAFNetWork:2 resultBlock:^(TestObject *testObject) {
+            __strong typeof(self) strong = weak;
+                                strong->dataSource.dataArray3 = testObject.items;
+                                strong->dataSource.clickIndex = 2;
+                                [strong->tableView3 reloadData];
+                                [strong->header3 endRefreshing];
+            NSLog(@"enter talbe3");
+
+        }];
     };
-//    [header3 beginRefreshing];
 }
--(void)requestWithAFNetWork{
+-(void)requestWithAFNetWork:(NSInteger )clickIndex resultBlock:(void (^)(TestObject* testObject))block
+{
     
     NSString *urlStr = @"https://api.github.com/search/users?q=tom+repos:%3E42+followers:%3E1000";
+    if (clickIndex == 1) {
+        urlStr = @"https://api.github.com/search/users?q=jack+repos:%3E42+followers:%3E1000";
+    }else if(clickIndex ==2){
+        urlStr = @"https://api.github.com/search/users?q=java+language:%3E42+followers:%3E1000";
+    }
     NSURL *url = [[NSURL alloc]initWithString:urlStr];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
@@ -159,23 +209,12 @@
     NSURLSessionDataTask *task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error: %@", error);
+            block(nil);
         } else {
-            TestObject *test = [TestObject mj_objectWithKeyValues:responseObject];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.data = test.items;
-                for (int i=0; i<[self.data count]; i++) {
-                    UserModel *model = [self.data objectAtIndex:i];
-                    NSLog(@"the model is %@",[model valueForKey:@"login"]);
-                }
-                [tableView reloadData];
-                [tableView2 reloadData];
-                [tableView3 reloadData];
-                [header endRefreshing];
-                [header2 endRefreshing];
-                [header3 endRefreshing];
-
-                
-            });
+              dispatch_async(dispatch_get_main_queue(), ^{
+                TestObject *test = [TestObject mj_objectWithKeyValues:responseObject];
+                block(test);
+              });
             
         }
     }];
@@ -190,34 +229,14 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.data count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    FirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if(cell == nil){
-        cell = [[FirstTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    UserModel *model = [self.data objectAtIndex:indexPath.row];
-    NSString *avatar = [model valueForKey:@"avatar_url"];
-    [cell.avatar sd_setImageWithURL:[NSURL URLWithString:avatar]];
-    cell.title.text = [NSString stringWithFormat:@"%@",[model valueForKey:@"login"]];
-    cell.rankLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
-    
-    return cell;
-}
-
+//scrollView滑动监听
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     
+    if(scrollView.contentOffset.x > scrollView.contentOffset.y && scrollView.contentOffset.x > 10){
         CGFloat pagewidth = scrollView.frame.size.width;
         int currentPage = floor((scrollView.contentOffset.x - pagewidth/ (2)) / pagewidth) + 1;
-    
-    [headerControll clickIndex:(currentPage)];
+        [headerControll clickIndex:(currentPage)];
+    }
 }
 @end

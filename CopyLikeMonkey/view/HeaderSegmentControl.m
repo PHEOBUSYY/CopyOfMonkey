@@ -69,11 +69,12 @@
         
         _buttonFourth = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:_buttonFourth];
-        _buttonFourth.frame = CGRectMake(w*3 + space, (h-height)/2, width, height);
+        _buttonFourth.frame = CGRectMake(w*3 + space, (h-20)/2, width-5, 20);
         [_buttonFourth setTitle:@"fourth" forState:UIControlStateNormal];
         _buttonFourth.titleLabel.font = normalFont;
         [_buttonFourth setTitleColor:black forState:UIControlStateNormal];
         [buttonArray addObject:_buttonFourth];
+        _buttonFourth.backgroundColor = YiBlue;
         [_buttonFourth addTarget:self action:@selector(actionClick:) forControlEvents:UIControlEventTouchUpInside];
         
         _buttonFirst.titleLabel.font = lightFont;
