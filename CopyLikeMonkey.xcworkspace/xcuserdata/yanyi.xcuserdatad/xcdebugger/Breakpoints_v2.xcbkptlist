@@ -20,12 +20,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CopyLikeMonkey/controller/FirstTableViewController.m"
-            timestampString = "510822116.949896"
+            timestampString = "511150671.753245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "-initTableView3"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
+            landmarkName = "-initTableView"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[FirstTableViewController initTableView]_block_invoke.177"
+                  moduleName = "CopyLikeMonkey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanyi/develop/IOS_PROJECT/CopyLikeMonkey/CopyLikeMonkey/controller/FirstTableViewController.m"
+                  timestampString = "511410763.971105"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "214"
+                  endingLineNumber = "214"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[FirstTableViewController initTableView]_block_invoke_2.178"
+                  moduleName = "CopyLikeMonkey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanyi/develop/IOS_PROJECT/CopyLikeMonkey/CopyLikeMonkey/controller/FirstTableViewController.m"
+                  timestampString = "511410763.972786"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CopyLikeMonkey/controller/SecondTableViewController.m"
+            timestampString = "511256813.433393"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-sendRequest"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -35,13 +83,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CopyLikeMonkey/controller/FirstTableViewController.m"
-            timestampString = "510822116.949896"
+            filePath = "CopyLikeMonkey/controller/RankDetailViewController.m"
+            timestampString = "511410758.220856"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-initTableView2"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-getUserRepo"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -36,7 +36,7 @@
             return 0;
     }
 }
--(NSMutableArray<UserModel*> *)getDataArrayWithIndex:(NSInteger) clickIndex
+-(NSMutableArray *)getDataArrayWithIndex:(NSInteger) clickIndex
 {
     switch (_clickIndex) {
         case 0:
@@ -67,11 +67,10 @@
     if(cell == nil){
         cell = [[FirstTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[self getCellIndetifier:_clickIndex]];
     }
-    UserModel *model = [[self getDataArrayWithIndex:_clickIndex] objectAtIndex:indexPath.row];
-//    UserModel *model = [self.data objectAtIndex:indexPath.row];
-    NSString *avatar = [model valueForKey:@"avatar_url"];
+    UserModel *model = [UserModel modelWithDict:[[self getDataArrayWithIndex:_clickIndex] objectAtIndex:indexPath.row]];
+    NSString *avatar = model.avatar_url;
     [cell.avatar sd_setImageWithURL:[NSURL URLWithString:avatar]];
-    cell.title.text = [NSString stringWithFormat:@"%@",[model valueForKey:@"login"]];
+    cell.title.text = [NSString stringWithFormat:@"%@",model.login];
     cell.rankLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
     
     return cell;

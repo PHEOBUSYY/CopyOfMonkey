@@ -22,6 +22,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+       
         black=[UIColor colorWithRed:0.35 green:0.35 blue:0.35 alpha:1];
         buttonArray = [[NSMutableArray alloc]initWithCapacity:4];
         light = YiBlue;
@@ -43,7 +44,7 @@
         _buttonFirst = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:_buttonFirst];
         _buttonFirst.frame = CGRectMake(space, (h-height)/2, width, height);
-        [_buttonFirst setTitle:@"first" forState:UIControlStateNormal];
+        [_buttonFirst setTitle:@"beijing" forState:UIControlStateNormal];
         _buttonFirst.titleLabel.font = normalFont;
         [_buttonFirst setTitleColor:black forState:UIControlStateNormal];
         [buttonArray addObject:_buttonFirst];
@@ -52,7 +53,7 @@
         _buttonSecond = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:_buttonSecond];
         _buttonSecond.frame = CGRectMake(w+space, (h-height)/2, width, height);
-        [_buttonSecond setTitle:@"sencond" forState:UIControlStateNormal];
+        [_buttonSecond setTitle:@"china" forState:UIControlStateNormal];
         _buttonSecond.titleLabel.font = normalFont;
         [_buttonSecond setTitleColor:black forState:UIControlStateNormal];
         [buttonArray addObject:_buttonSecond];
@@ -61,7 +62,7 @@
         _buttonThird = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:_buttonThird];
         _buttonThird.frame = CGRectMake(w*2 + space, (h-height)/2, width, height);
-        [_buttonThird setTitle:@"third" forState:UIControlStateNormal];
+        [_buttonThird setTitle:@"world" forState:UIControlStateNormal];
         _buttonThird.titleLabel.font = normalFont;
         [_buttonThird setTitleColor:black forState:UIControlStateNormal];
         [buttonArray addObject:_buttonThird];
@@ -70,9 +71,9 @@
         _buttonFourth = [UIButton buttonWithType:UIButtonTypeCustom];
         [self addSubview:_buttonFourth];
         _buttonFourth.frame = CGRectMake(w*3 + space, (h-20)/2, width-5, 20);
-        [_buttonFourth setTitle:@"fourth" forState:UIControlStateNormal];
+        [_buttonFourth setTitle:@"total:0" forState:UIControlStateNormal];
         _buttonFourth.titleLabel.font = normalFont;
-        [_buttonFourth setTitleColor:black forState:UIControlStateNormal];
+        [_buttonFourth setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [buttonArray addObject:_buttonFourth];
         _buttonFourth.backgroundColor = YiBlue;
         [_buttonFourth addTarget:self action:@selector(actionClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -97,7 +98,7 @@
 }
 -(void)clickIndex:(NSInteger)clickIndex
 {
-    if (clickIndex == currentIndex) {
+    if (clickIndex == currentIndex || clickIndex == self.buttonCount) {
         return;
     }
     currentIndex = clickIndex;
@@ -105,7 +106,7 @@
     clickButton.titleLabel.font = lightFont;
     [clickButton setTitleColor:light forState:UIControlStateNormal];
     for (int i=0; i<[buttonArray count]; i++) {
-        if(i != clickIndex){
+        if(i != clickIndex && i < ([buttonArray count]-1)){
             UIButton *unclickButton = buttonArray[i];
             unclickButton.titleLabel.font = normalFont;
             [unclickButton setTitleColor:black forState:UIControlStateNormal];
