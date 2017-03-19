@@ -16,4 +16,6 @@
 #define YiTextGray [UIColor colorWithRed:0.54f green:0.54f blue:0.54f alpha:1.00f]
 #define ScreenWidth [[UIScreen mainScreen] bounds].size.width
 #define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define WEAKREF typeof(self) __weak weakSelf = self;
+#define STRONGREF typeof(self) __strong strongSelf = weakSelf;
 #endif /* public_h */

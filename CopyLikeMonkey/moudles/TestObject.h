@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "UserModel.h"
+
 @interface TestObject : NSObject
 @property (assign,nonatomic) int total_count;
 @property (assign,nonatomic) BOOL incomplete_results;
-@property (strong,nonatomic) NSMutableArray<UserModel*>* items;
+@property (strong,nonatomic) NSMutableArray  *items;
 
 @end

@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 #import "FirstTableViewController.h"
+#import "SecondTableViewController.h"
+#import "ThirdViewController.h"
+#import "FourthViewController.h"
 
 @interface AppDelegate ()
 
@@ -24,19 +27,23 @@
 - (void)initController{
     UITabBarController *tabarController = [[UITabBarController alloc] init];
     FirstTableViewController * tab1 = [[FirstTableViewController alloc] init];
-    UIViewController * tab2 = [[UIViewController alloc] init];
-    UIViewController * tab3 = [[UIViewController alloc] init];
+    SecondTableViewController * tab2 = [[SecondTableViewController alloc] init];
+    ThirdViewController * tab3 = [[ThirdViewController alloc] init];
+    FourthViewController *tab4 = [[FourthViewController alloc]init];
+    
     tab1.view.backgroundColor = [UIColor whiteColor];
     tab2.view.backgroundColor = [UIColor whiteColor];
     tab3.view.backgroundColor = [UIColor whiteColor];
+    tab4.view.backgroundColor = [UIColor whiteColor];
     UINavigationController *nv1 = [[UINavigationController alloc] initWithRootViewController:tab1];
     UINavigationController *nv2 = [[UINavigationController alloc] initWithRootViewController:tab2];
     UINavigationController *nv3 = [[UINavigationController alloc] initWithRootViewController:tab3];
+    UINavigationController *nv4 = [[UINavigationController alloc] initWithRootViewController:tab4];
     
     nv1.navigationBar.tintColor = [UIColor whiteColor];
     nv1.navigationBar.barTintColor = YiBlue;
     nv1.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
-    [tab1 setTitle:@"item1"];
+    [tab1 setTitle:@"Objective-C"];
     
     nv1.navigationBar.barStyle = UIStatusBarStyleLightContent;
 
@@ -45,7 +52,7 @@
     nv2.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     //设置状态栏的字体颜色
     nv2.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    [tab2 setTitle:@"item2"];
+    [tab2 setTitle:@"Repo"];
     
     
     nv3.navigationBar.tintColor = [UIColor whiteColor];
@@ -53,27 +60,38 @@
     nv3.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
     //设置状态栏的字体颜色
     nv3.navigationBar.barStyle = UIStatusBarStyleLightContent;
-    [tab3 setTitle:@"item3"];
+    [tab3 setTitle:@"Discorvery"];
+    
+    nv4.navigationBar.tintColor = [UIColor whiteColor];
+    nv4.navigationBar.barTintColor = YiBlue;
+    nv4.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:NSForegroundColorAttributeName];
+    //设置状态栏的字体颜色
+    nv4.navigationBar.barStyle = UIStatusBarStyleLightContent;
+    [tab4 setTitle:@"More"];
+
     
     
-    tabarController.viewControllers = @[nv1,nv2,nv3];
+    tabarController.viewControllers = @[nv1,nv2,nv3,nv4];
     
     UITabBarItem *item1 = [tabarController.tabBar.items objectAtIndex:0];
     UITabBarItem *item2 = [tabarController.tabBar.items objectAtIndex:1];
     UITabBarItem *item3 = [tabarController.tabBar.items objectAtIndex:2];
+    UITabBarItem *item4 = [tabarController.tabBar.items objectAtIndex:3];
     
     tabarController.tabBar.backgroundColor = [UIColor whiteColor];
     tabarController.tabBar.tintColor = YiBlue;
-    item1.title = @"item1";
-    item2.title = @"item2";
-    item3.title = @"item3";
+    item1.title = @"users";
+    item2.title = @"repos";
+    item3.title = @"discovers";
+    item4.title = @"more";
     
     item1.image = [UIImage imageNamed:@"github60"];
     item2.image = [UIImage imageNamed:@"github160"];
-    item3.image = [UIImage imageNamed:@"more"];
+    item3.image = [UIImage imageNamed:@"github60"];
+    item4.image = [UIImage imageNamed:@"more"];
     
     self.window.rootViewController = tabarController;
-    
+//    [tabarController setSelectedIndex:1];
     
 }
 

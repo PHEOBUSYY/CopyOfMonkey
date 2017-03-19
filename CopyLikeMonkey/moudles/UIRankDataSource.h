@@ -10,8 +10,8 @@
 @class UserModel;
 
 @interface UIRankDataSource : NSObject<UITableViewDataSource>
-@property(strong,nonatomic) NSMutableArray<UserModel*> *dataArray1;
-@property(strong,nonatomic) NSMutableArray<UserModel*> *dataArray2;
-@property(strong,nonatomic) NSMutableArray<UserModel*> *dataArray3;
+@property(strong,nonatomic) NSMutableArray *dataArray1;
+@property(strong,nonatomic) NSMutableArray *dataArray2;
+@property(strong,nonatomic) NSMutableArray *dataArray3;
 @property(assign,nonatomic) NSInteger clickIndex;
 @end
