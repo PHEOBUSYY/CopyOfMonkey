@@ -7,12 +7,21 @@
 //
 
 #import "ThirdViewController.h"
-
+#import "TrendingViewController.h"
+#import "ShowCaseViewController.h"
+#import "SearchViewController.h"
 @interface ThirdViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UITableView *tableView;
 @end
 
 @implementation ThirdViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -63,7 +72,16 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (indexPath.section == 0) {
+        TrendingViewController * trending = [[TrendingViewController alloc] init];
+        [self.navigationController pushViewController:trending animated:YES];
+    } else if(indexPath.section == 1){
+        ShowCaseViewController * trending = [[ShowCaseViewController alloc] init];
+        [self.navigationController pushViewController:trending animated:YES];
+    } else if (indexPath.section == 3){
+        SearchViewController *search = [[SearchViewController alloc] init];
+        [self.navigationController pushViewController:search animated:YES];
+    }
 }
 
 

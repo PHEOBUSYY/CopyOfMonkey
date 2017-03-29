@@ -8,10 +8,13 @@
 //
 
 #import "RankDetailViewController.h"
+#import "RepositoriesDetailControllerViewController.h"
 #import "DetailSegmentControll.h"
 #import "HttpKit.h"
 #import "TestObject.h"
-
+#import "RepositoryModel.h"
+#import "FirstTableViewCell.h"
+#import "RepoTableViewCell.h"
 @interface RankDetailViewController () <UITableViewDelegate,UITableViewDataSource>
 {
     UILabel *name;
@@ -36,12 +39,16 @@
 @property (strong,nonatomic) NSMutableArray * data1;
 @property (strong,nonatomic) NSMutableArray * data2;
 @property (strong,nonatomic) NSMutableArray * data3;
+@property (strong,nonatomic) NSMutableArray * currentDataList;
+@property (assign,nonatomic) int currentPage;
 
 @end
 
 @implementation RankDetailViewController
 
 - (void)viewDidLoad {
+    self.page1 = self.page2 = self.page3 = 1;
+    self.tabBarController.tabBar.hidden = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     self.tabBarController.tabBar.hidden = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -50,7 +57,7 @@
     WEAKREF
     self.errorBlock = ^(NSError * _Nonnull error){
         STRONGREF
-        NSLog(@"%@",error);
+        NSLog(@"the http error is %@",error);
         [strongSelf.header endRefreshing];
         [strongSelf.navigationController popViewControllerAnimated:YES];
     };
@@ -62,7 +69,10 @@
     }else{
         [_header beginRefreshing];
     }
-//    [_header beginRefreshing];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    self.tabBarController.tabBar.hidden = NO;
 }
 #pragma view Init
 - (void)initMainView
@@ -79,12 +89,35 @@
     WEAKREF
     self.header.beginRefreshingBlock = ^(){
         STRONGREF
+        if([self getCurrntIndex] == 1){
+            strongSelf.page2 =1;
+        }else if([self getCurrntIndex] ==2){
+            strongSelf.page3 =1;
+        }else{
+            strongSelf.page1 =1;
+        }
         [strongSelf getUserDetail];
     };
+    
+    self.footer = [[YiRefreshFooter alloc]init];
+    self.footer.scrollView = self.tableView;
+    [self.footer footer];
+    self.footer.beginRefreshingBlock = ^(){
+        STRONGREF
+        if([self getCurrntIndex] == 1){
+            strongSelf.page2 ++;
+        }else if([self getCurrntIndex] ==2){
+            strongSelf.page3 ++;
+        }else{
+            strongSelf.page1 ++;
+        }
+        [strongSelf getUserDataByType:[strongSelf getCurrntIndex]];
+    };
 }
+
 - (void)initTableView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
@@ -109,9 +142,9 @@
     name.textColor = YiBlue;
     name.font = [UIFont systemFontOfSize:15];
     avatar = [[UIImageView alloc] initWithFrame:CGRectMake(honSpace, topSpace, imageWidth, imageWidth)];
-    avatar.layer.cornerRadius = 10;
+    avatar.layer.cornerRadius = 11;
     avatar.layer.borderWidth = 0.3;
-    avatar.layer.backgroundColor = YiGray.CGColor;
+    avatar.layer.borderColor = YiGray.CGColor;
     avatar.layer.masksToBounds=YES;
     createTime = [[UILabel alloc] initWithFrame:CGRectMake(honSpace, topSpace + imageWidth+topSpace, imageWidth+3, labelHeight)];
     createTime.font = [UIFont systemFontOfSize:9];
@@ -144,10 +177,20 @@
     
     [self updateHeaderView];
     _headerControl = [[DetailSegmentControll alloc]initWithFrame:CGRectMake(0, h+topSpace, ScreenWidth, headerControlHeight)];
+    
+//    [_headerControl setNeedsLayout];
+    WEAKREF
     _headerControl.clickBlock = ^(int clickIndex){
-        NSLog(@"%d",clickIndex);
+        STRONGREF
+        strongSelf.currentDataList = [[NSMutableArray alloc]initWithCapacity:0];
+        [strongSelf.tableView reloadData  ];
+//        strongSelf.headerControl.buttonCount = 2;
+        [strongSelf getUserDataByType:clickIndex];
+//        [strongSelf.headerControl setNeedsLayout];
+//        [strongSelf.headerControl layoutIfNeeded];
     };
     [self.headerDetailView addSubview:_headerControl];
+    _headerControl.buttonCount = 2;
 }
 - (void) updateHeaderView
 {
@@ -181,23 +224,48 @@
 {
     return self.headerControl.currentIndex;
 }
+- (int)getCurrentPage
+{
+    if ([self getCurrntIndex] == 1) {
+        return self.page2;
+    }else if([self getCurrntIndex] == 2){
+        return self.page3;
+    }else{
+        return self.page1;
+    }
+}
 #pragma tableView
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detail"];
-    }
+    
     if ([self getCurrntIndex] == 1) {
         
+        FirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail1"];
+        if (cell == nil) {
+            cell = [[FirstTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detail1"];
+        }
+        UserModel *model = [UserModel modelWithDict:_data2[indexPath.row]];
+        [cell showViewByModel:model withIndex:(int)(indexPath.row + 1)];
+        return cell;
     }else if([self getCurrntIndex] == 2){
+        FirstTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail2"];
+        if (cell == nil) {
+            cell = [[FirstTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detail2"];
+        }
+        UserModel *model = [UserModel modelWithDict:_data3[indexPath.row]];
         
+        [cell showViewByModel:model withIndex:(int)(indexPath.row + 1)];
+        return cell;
     }else{
-        UserModel *model = [UserModel modelWithDict:_data1[indexPath.row]];
-                            cell.textLabel.text = model.login;
-        cell.textLabel.text = model.login;
+        RepoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detail0"];
+        if (cell == nil) {
+            cell = [[RepoTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"detail0"];
+        }
+        RepositoryModel *model = [RepositoryModel modelWithDict:_data1[indexPath.row]];
+        [cell showViewByModel:model withIndex:(int)(indexPath.row + 1)];
+        return cell;
     }
-    return cell;
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -207,6 +275,31 @@
         return [_data3 count];
     }
     return [_data1 count];;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self getCurrntIndex] != 0) {
+        return 70;
+    }else{
+        return 100;
+    };
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self getCurrntIndex] == 1) {
+        RankDetailViewController *detail = [[RankDetailViewController alloc] init];
+        detail.userModel = [UserModel modelWithDict: self.data2[indexPath.row]];
+        [self.navigationController pushViewController:detail animated:YES];
+    }else if([self getCurrntIndex ] ==2){
+        RankDetailViewController *detail = [[RankDetailViewController alloc] init];
+        detail.userModel = [UserModel modelWithDict: self.data3[indexPath.row]];
+        [self.navigationController pushViewController:detail animated:YES];
+        
+    }else{
+        RepositoriesDetailControllerViewController *repoDetail = [[RepositoriesDetailControllerViewController alloc]init];
+        repoDetail.repo = [RepositoryModel modelWithDict: self.data1[indexPath.row]] ;
+        [self.navigationController pushViewController:repoDetail animated:YES];
+    }
 }
 #pragma http request
 -(void)getUserDetail
@@ -238,24 +331,36 @@
 
 - (void)getUserRepo
 {
-     NSString *urlStr = [NSString stringWithFormat:@"/repos/%@/%@/contributors?page=%ld",self.userModel.login,self.userModel.name,(long)_page1];
-    NSLog(@"https://api.github.com/%@",urlStr);
+    
+    NSString *urlStr = [NSString stringWithFormat:@"http://api.github.com/users/%@/repos?sort=updated&page=%ld",self.userModel.login,(long)_page1];
+    
     [[HttpKit sharedKit]doGet:urlStr withParam:nil withSucessBlock:^(id _Nonnull responseObject){
-        _data1  = responseObject;
-        NSLog(@"%ld",[_data1 count]);
-        [self.tableView reloadData];
-        [self.header endRefreshing];
+        if (_page1 > 1) {
+            [_data1 addObjectsFromArray:responseObject];
+            [self.footer endRefreshing];
+        }else{
+             _data1  = [[NSMutableArray alloc]initWithArray:responseObject];
+            [self.header endRefreshing];
+        }
+         [self.tableView reloadData];
     }  withErroBlock:^(NSError * _Nonnull error) {
-        NSLog(@"http erro %@",error);
         [self.header endRefreshing];
     }];
 }
 - (void)getUserFollowing
 {
-    NSString *urlStr = @"";
-    
+    NSLog(@"enter userfollowing!");
+    NSString *urlStr = @"https://api.github.com/users/%@/following?page=%ld";
+    urlStr = [NSString stringWithFormat:urlStr,self.userModel.login,(long)_page2];
     [[HttpKit sharedKit]doGet:urlStr withParam:nil withSucessBlock:^(id _Nonnull responseObject){
-        [self.header endRefreshing];
+        if (_page2 > 1) {
+            [_data2 addObjectsFromArray:responseObject];
+            [self.footer endRefreshing];
+        }else{
+             _data2 =  [[NSMutableArray alloc] initWithArray: responseObject];
+            [self.header endRefreshing];
+        }
+         [self.tableView reloadData];
     }  withErroBlock:^(NSError * _Nonnull error) {
         self.errorBlock(error);
     }];
@@ -263,10 +368,17 @@
 }
 - (void)getUserFollower
 {
-    NSString *urlStr = @"";
-    
-    [[HttpKit sharedKit]doGet:urlStr withParam:nil withSucessBlock:^(NSDictionary * _Nonnull responseObject){
-        [self.header endRefreshing];
+    NSString *urlStr = @"https://api.github.com/users/%@/followers?page=%ld";
+    urlStr = [NSString stringWithFormat:urlStr,self.userModel.login,(long)_page3];
+    [[HttpKit sharedKit]doGet:urlStr withParam:nil withSucessBlock:^(id _Nonnull responseObject){
+        if (_page3 > 1) {
+            [_data3 addObjectsFromArray:responseObject];
+            [self.footer endRefreshing];
+        }else{
+             _data3 =  [[NSMutableArray alloc] initWithArray: responseObject];
+            [self.header endRefreshing];
+        }
+        [self.tableView reloadData];
     }  withErroBlock:^(NSError * _Nonnull error) {
         self.errorBlock(error);
     }];

@@ -28,7 +28,7 @@ static HttpKit *kit;
 {
     self = [super init];
     if (self) {
-        _manager = [[AFHTTPSessionManager alloc]initWithBaseURL:[NSURL URLWithString:@"https://api.github.com"]];
+        _manager = [[AFHTTPSessionManager alloc]init];
     }
     return self;
 }
@@ -39,6 +39,7 @@ static HttpKit *kit;
     [_manager GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         sucess(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"the request is error @%@",error);
         errorBlock(error);
     }];
 }

@@ -12,11 +12,12 @@
 #import "TestObject.h"
 #import "LanguageViewController.h"
 #import "RepoTableViewCell.h"
+#import "RepositoriesDetailControllerViewController.h"
 @interface SecondTableViewController () <UITableViewDelegate,UITableViewDataSource>
 {
     NSString *currentLanguage;
 }
-@property (strong,nonatomic) NSArray * data;
+@property (strong,nonatomic) NSMutableArray * data;
 @property (strong,nonatomic) YiRefreshHeader * header;
 @property (strong,nonatomic) YiRefreshFooter * footer;
 @property (assign,nonatomic) int page;
@@ -112,16 +113,14 @@
 {
     if (_page>1) {
         [self.footer endRefreshing];
-        NSMutableArray * allData = [[NSMutableArray alloc]initWithArray:_data];
-        [allData addObjectsFromArray:test.items];
-        _data = [allData copy];
+        [_data addObjectsFromArray:test.items];
     }else{
         [self.header endRefreshing];
-        _data = test.items;
+        _data = [[NSMutableArray alloc] initWithArray: test.items];
     }
     
     if (_data == nil) {
-        _data = [[NSArray alloc]init];
+        _data = [[NSMutableArray alloc]init];
     }
     [self.tableView reloadData];
 }
@@ -145,62 +144,14 @@
         cell = [[RepoTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"repo"];
     }
     RepositoryModel *model = [RepositoryModel modelWithDict:_data[indexPath.row]] ;
-    //这里要注意请求返回的居然是一个字典,不是理解上的对象,可以直接获取属性
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@ _ %ld", [model valueForKey:@"login"],indexPath.row];
-    cell.rankLanbel.text = [NSString stringWithFormat:@"%ld",indexPath.row] ;
-    cell.loginLable.text = model.name;
-    cell.netLebal.text = model.homepage;
-    cell.ownerLabel.text = [NSString stringWithFormat:@"owner:%@", model.user.login];
-    cell.startLabel.text = [NSString stringWithFormat:@"stars:%d",model.stargazers_count];
-    cell.desLabel.text = model.repositoryDescription;
-    
-    [cell.avarta sd_setImageWithURL:[NSURL URLWithString:model.user.avatar_url]];
-    
+    [cell showViewByModel:model withIndex:(int)(indexPath.row + 1)];
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RepositoryModel *model = [RepositoryModel modelWithDict:_data[indexPath.row]] ;
+    RepositoriesDetailControllerViewController *detail = [[RepositoriesDetailControllerViewController alloc]init];
+    detail.repo = model;
+    [self.navigationController pushViewController:detail animated:YES];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

@@ -79,5 +79,14 @@
 
     // Configure the view for the selected state
 }
-
+-(void)showViewByModel:(RepositoryModel *)model withIndex:(int)index
+{
+    self.rankLanbel.text = [NSString stringWithFormat:@"%d",index] ;
+    self.loginLable.text = model.name;
+    self.netLebal.text = model.homepage;
+    self.ownerLabel.text = [NSString stringWithFormat:@"owner:%@", model.user.login];
+    self.startLabel.text = [NSString stringWithFormat:@"stars:%d",model.stargazers_count];
+    self.desLabel.text = model.repositoryDescription;
+    [self.avarta sd_setImageWithURL:[NSURL URLWithString:model.user.avatar_url]];
+}
 @end

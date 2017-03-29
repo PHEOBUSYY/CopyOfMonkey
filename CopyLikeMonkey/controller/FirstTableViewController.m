@@ -37,17 +37,22 @@
     int page1 ;
     int page2 ;
     int page3 ;
+    
 }
 @property(strong,nonatomic) UIScrollView *scrollView;
 @property(strong,nonatomic) NSMutableArray<UserModel*> *data;
 @property(strong,nonatomic) NSMutableArray<UserModel*> *data2;
 @property(strong,nonatomic) NSMutableArray<UserModel*> *data3;
+@property(strong,nonatomic) NSString *currentLanguage;
+@property(strong,nonatomic) NSString *currentCountry;
+@property(strong,nonatomic) NSString *currentCity;
 
 @end
 
 @implementation FirstTableViewController
 
 - (void)viewDidLoad {
+   
     [super viewDidLoad];
     //解决如果根view是scrollview的时候给scrollview添加view的时候会向下偏移64px的问题
     
@@ -91,6 +96,16 @@
     if (language == nil) {
         language = @"Objective-C";
     }
+    if ([self.currentLanguage isEqualToString:language] &&
+        [self.currentCountry isEqualToString:contryName] &&
+        [self.currentCity isEqualToString:cityName]
+        ) {
+        return;
+    }
+    self.currentCity = cityName;
+    self.currentCountry = contryName;
+    self.currentLanguage = language;
+    
     self.navigationItem.title = language;
     if (currentIndex == 1) {
         [header2 beginRefreshing];
@@ -99,6 +114,7 @@
     }else{
         [header beginRefreshing];
     }
+     self.tabBarController.tabBar.hidden = NO;
 }
 -(void)initNavigationItem
 {
@@ -125,9 +141,9 @@
     __weak typeof(self) weakSelf2 = self;
     headerControll.ClickBlock = ^(NSInteger clickIndex){
         __strong typeof(self) strongSelf2 = weakSelf2;
-        strongSelf2->currentIndex = clickIndex;
+        strongSelf2->currentIndex = (int)clickIndex;
         [strongSelf2.scrollView setContentOffset:CGPointMake(ScreenWidth*clickIndex, 0) animated:YES];
-        [strongSelf2.scrollView scrollRectToVisible:CGRectMake(ScreenWidth*clickIndex, 0, ScreenWidth, bgViewHeight) animated:NO];
+        [strongSelf2.scrollView scrollRectToVisible:CGRectMake(ScreenWidth*clickIndex, 0, ScreenWidth, strongSelf2->bgViewHeight) animated:NO];
         NSLog(@"the offsetX is %f",strongSelf2.scrollView.contentOffset.x);
         [strongSelf2 onTabClick:clickIndex];
     };
@@ -385,7 +401,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     id model = nil;
     if (currentIndex == 1) {

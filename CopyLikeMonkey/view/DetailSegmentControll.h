@@ -26,4 +26,6 @@
 @property (copy,nonatomic) void(^clickBlock)(int clickIndex);
 
 @property (assign,nonatomic) int currentIndex;
+@property (assign,nonatomic) int buttonCount;
+@property (assign,nonatomic) Boolean showTopLabel;
 @end

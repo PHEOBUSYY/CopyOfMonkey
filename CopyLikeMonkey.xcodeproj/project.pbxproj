@@ -15,7 +15,15 @@
 		A0172EB31E7A293D007A94BC /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0172EB21E7A293D007A94BC /* FourthViewController.m */; };
 		A0172EB61E7A5AFA007A94BC /* RankDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0172EB51E7A5AFA007A94BC /* RankDetailViewController.m */; };
 		A0172EB91E7A7C0A007A94BC /* DetailSegmentControll.m in Sources */ = {isa = PBXBuildFile; fileRef = A0172EB81E7A7C0A007A94BC /* DetailSegmentControll.m */; };
+		A018E8651E80FE9900359796 /* RepositoriesDetailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8641E80FE9900359796 /* RepositoriesDetailControllerViewController.m */; };
+		A018E8681E811BFA00359796 /* HttpHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8671E811BFA00359796 /* HttpHandler.m */; };
+		A018E86B1E835E1D00359796 /* TrendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E86A1E835E1D00359796 /* TrendingViewController.m */; };
+		A018E86E1E83AA5000359796 /* BaseRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E86D1E83AA5000359796 /* BaseRequestViewController.m */; };
+		A018E8711E83ACCD00359796 /* ShowCaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8701E83ACCD00359796 /* ShowCaseViewController.m */; };
+		A018E8741E83AFC300359796 /* ShowcasesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8731E83AFC300359796 /* ShowcasesModel.m */; };
+		A018E8771E83BAB500359796 /* ShowCaseViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8761E83BAB500359796 /* ShowCaseViewCellTableViewCell.m */; };
 		A05832001E72396E0076E130 /* UIRankDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A05831FF1E72396E0076E130 /* UIRankDataSource.m */; };
+		A07331B31E8B3D5000031A35 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07331B21E8B3D5000031A35 /* SearchViewController.m */; };
 		A07A7EAC1E766E0C00AA893B /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A7EAB1E766E0C00AA893B /* CityViewController.m */; };
 		A07A7EAF1E766E1B00AA893B /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A7EAE1E766E1B00AA893B /* LanguageViewController.m */; };
 		A07A7EB21E76715900AA893B /* ContryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A7EB11E76715900AA893B /* ContryTableViewController.m */; };
@@ -30,6 +38,7 @@
 		A0A3DC7E1E6E995000733D95 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC7D1E6E995000733D95 /* MainController.m */; };
 		A0A3DC851E6EDB5200733D95 /* FirstTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC841E6EDB5200733D95 /* FirstTableViewController.m */; };
 		A0A3DC891E6F8A9000733D95 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC881E6F8A9000733D95 /* FirstTableViewCell.m */; };
+		A0BF979A1E89F10200365934 /* ShowCaseDetailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */; };
 		A0FEC5951E6FDEE800D90D34 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5941E6FDEE800D90D34 /* TestObject.m */; };
 		A0FEC5981E6FF10600D90D34 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5971E6FF10600D90D34 /* UserModel.m */; };
 		A0FEC59F1E6FF2BF00D90D34 /* NSObject+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC59C1E6FF2BF00D90D34 /* NSObject+HUD.m */; };
@@ -57,8 +66,24 @@
 		A0172EB51E7A5AFA007A94BC /* RankDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RankDetailViewController.m; sourceTree = "<group>"; };
 		A0172EB71E7A7C0A007A94BC /* DetailSegmentControll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSegmentControll.h; sourceTree = "<group>"; };
 		A0172EB81E7A7C0A007A94BC /* DetailSegmentControll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSegmentControll.m; sourceTree = "<group>"; };
+		A018E8631E80FE9900359796 /* RepositoriesDetailControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepositoriesDetailControllerViewController.h; sourceTree = "<group>"; };
+		A018E8641E80FE9900359796 /* RepositoriesDetailControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepositoriesDetailControllerViewController.m; sourceTree = "<group>"; };
+		A018E8661E811BFA00359796 /* HttpHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHandler.h; sourceTree = "<group>"; };
+		A018E8671E811BFA00359796 /* HttpHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHandler.m; sourceTree = "<group>"; };
+		A018E8691E835E1D00359796 /* TrendingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingViewController.h; sourceTree = "<group>"; };
+		A018E86A1E835E1D00359796 /* TrendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingViewController.m; sourceTree = "<group>"; };
+		A018E86C1E83AA5000359796 /* BaseRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequestViewController.h; sourceTree = "<group>"; };
+		A018E86D1E83AA5000359796 /* BaseRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequestViewController.m; sourceTree = "<group>"; };
+		A018E86F1E83ACCD00359796 /* ShowCaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseViewController.h; sourceTree = "<group>"; };
+		A018E8701E83ACCD00359796 /* ShowCaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseViewController.m; sourceTree = "<group>"; };
+		A018E8721E83AFC300359796 /* ShowcasesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowcasesModel.h; sourceTree = "<group>"; };
+		A018E8731E83AFC300359796 /* ShowcasesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowcasesModel.m; sourceTree = "<group>"; };
+		A018E8751E83BAB500359796 /* ShowCaseViewCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseViewCellTableViewCell.h; sourceTree = "<group>"; };
+		A018E8761E83BAB500359796 /* ShowCaseViewCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseViewCellTableViewCell.m; sourceTree = "<group>"; };
 		A05831FE1E72396E0076E130 /* UIRankDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRankDataSource.h; sourceTree = "<group>"; };
 		A05831FF1E72396E0076E130 /* UIRankDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRankDataSource.m; sourceTree = "<group>"; };
+		A07331B11E8B3D5000031A35 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		A07331B21E8B3D5000031A35 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A07A7EAA1E766E0C00AA893B /* CityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewController.h; sourceTree = "<group>"; };
 		A07A7EAB1E766E0C00AA893B /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
 		A07A7EAD1E766E1B00AA893B /* LanguageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
@@ -86,6 +111,8 @@
 		A0A3DC881E6F8A9000733D95 /* FirstTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewCell.m; sourceTree = "<group>"; };
 		A0A3DC8B1E6F8E7400733D95 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = CopyLikeMonkey/PrefixHeader.pch; sourceTree = "<group>"; };
 		A0A3DC8D1E6F8EEB00733D95 /* public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = public.h; sourceTree = "<group>"; };
+		A0BF97981E89F10200365934 /* ShowCaseDetailControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseDetailControllerViewController.h; sourceTree = "<group>"; };
+		A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseDetailControllerViewController.m; sourceTree = "<group>"; };
 		A0FEC5931E6FDEE800D90D34 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
 		A0FEC5941E6FDEE800D90D34 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
 		A0FEC5961E6FF10600D90D34 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -130,6 +157,8 @@
 			children = (
 				A0800BA11E7AB7170020CB3F /* HttpKit.h */,
 				A0800BA21E7AB7170020CB3F /* HttpKit.m */,
+				A018E8661E811BFA00359796 /* HttpHandler.h */,
+				A018E8671E811BFA00359796 /* HttpHandler.m */,
 			);
 			path = net;
 			sourceTree = "<group>";
@@ -187,6 +216,8 @@
 		A0A3DC7A1E6E991000733D95 /* moudles */ = {
 			isa = PBXGroup;
 			children = (
+				A018E8721E83AFC300359796 /* ShowcasesModel.h */,
+				A018E8731E83AFC300359796 /* ShowcasesModel.m */,
 				A0172EAB1E791BC0007A94BC /* RepositoryModel.h */,
 				A0172EAC1E791BC0007A94BC /* RepositoryModel.m */,
 				A0FEC5961E6FF10600D90D34 /* UserModel.h */,
@@ -220,6 +251,18 @@
 				A0172EB21E7A293D007A94BC /* FourthViewController.m */,
 				A0172EB41E7A5AFA007A94BC /* RankDetailViewController.h */,
 				A0172EB51E7A5AFA007A94BC /* RankDetailViewController.m */,
+				A018E8631E80FE9900359796 /* RepositoriesDetailControllerViewController.h */,
+				A018E8641E80FE9900359796 /* RepositoriesDetailControllerViewController.m */,
+				A018E8691E835E1D00359796 /* TrendingViewController.h */,
+				A018E86A1E835E1D00359796 /* TrendingViewController.m */,
+				A018E86C1E83AA5000359796 /* BaseRequestViewController.h */,
+				A018E86D1E83AA5000359796 /* BaseRequestViewController.m */,
+				A018E86F1E83ACCD00359796 /* ShowCaseViewController.h */,
+				A018E8701E83ACCD00359796 /* ShowCaseViewController.m */,
+				A0BF97981E89F10200365934 /* ShowCaseDetailControllerViewController.h */,
+				A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */,
+				A07331B11E8B3D5000031A35 /* SearchViewController.h */,
+				A07331B21E8B3D5000031A35 /* SearchViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -235,6 +278,8 @@
 				A0172EA61E791355007A94BC /* RepoTableViewCell.m */,
 				A0172EB71E7A7C0A007A94BC /* DetailSegmentControll.h */,
 				A0172EB81E7A7C0A007A94BC /* DetailSegmentControll.m */,
+				A018E8751E83BAB500359796 /* ShowCaseViewCellTableViewCell.h */,
+				A018E8761E83BAB500359796 /* ShowCaseViewCellTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -419,25 +464,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0BF979A1E89F10200365934 /* ShowCaseDetailControllerViewController.m in Sources */,
 				A0172EB31E7A293D007A94BC /* FourthViewController.m in Sources */,
 				A0A3DC851E6EDB5200733D95 /* FirstTableViewController.m in Sources */,
+				A018E8681E811BFA00359796 /* HttpHandler.m in Sources */,
 				A0FEC5951E6FDEE800D90D34 /* TestObject.m in Sources */,
+				A018E8711E83ACCD00359796 /* ShowCaseViewController.m in Sources */,
 				A0172EB01E7A1A27007A94BC /* ThirdViewController.m in Sources */,
+				A018E8651E80FE9900359796 /* RepositoriesDetailControllerViewController.m in Sources */,
 				A05832001E72396E0076E130 /* UIRankDataSource.m in Sources */,
 				A0A3DC5E1E6E8EF900733D95 /* ViewController.m in Sources */,
 				A0172EA71E791355007A94BC /* RepoTableViewCell.m in Sources */,
 				A0FEC59F1E6FF2BF00D90D34 /* NSObject+HUD.m in Sources */,
 				A0FEC5A01E6FF2BF00D90D34 /* NSObject+JudgeNull.m in Sources */,
+				A018E8741E83AFC300359796 /* ShowcasesModel.m in Sources */,
 				A0FEC5A91E70DFE000D90D34 /* YiRefreshFooter.m in Sources */,
 				A0FEC5AA1E70DFE000D90D34 /* YiRefreshHeader.m in Sources */,
 				A0A3DC891E6F8A9000733D95 /* FirstTableViewCell.m in Sources */,
 				A0172EA41E77B63C007A94BC /* SecondTableViewController.m in Sources */,
 				A0172EAD1E791BC0007A94BC /* RepositoryModel.m in Sources */,
+				A018E86B1E835E1D00359796 /* TrendingViewController.m in Sources */,
 				A0A3DC5B1E6E8EF900733D95 /* AppDelegate.m in Sources */,
+				A018E8771E83BAB500359796 /* ShowCaseViewCellTableViewCell.m in Sources */,
 				A07A7EAC1E766E0C00AA893B /* CityViewController.m in Sources */,
+				A018E86E1E83AA5000359796 /* BaseRequestViewController.m in Sources */,
 				A0800BA31E7AB7170020CB3F /* HttpKit.m in Sources */,
 				A0172EB61E7A5AFA007A94BC /* RankDetailViewController.m in Sources */,
 				A0A3DC641E6E8EF900733D95 /* CopyLikeMonkey.xcdatamodeld in Sources */,
+				A07331B31E8B3D5000031A35 /* SearchViewController.m in Sources */,
 				A0FEC5981E6FF10600D90D34 /* UserModel.m in Sources */,
 				A0A3DC7E1E6E995000733D95 /* MainController.m in Sources */,
 				A07A7EB21E76715900AA893B /* ContryTableViewController.m in Sources */,
@@ -569,6 +623,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 96W3CPVG99;
 				INFOPLIST_FILE = CopyLikeMonkey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanyi.CopyLikeMonkey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -582,6 +637,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 96W3CPVG99;
 				INFOPLIST_FILE = CopyLikeMonkey/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yanyi.CopyLikeMonkey;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -22,7 +22,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-       
+        self.buttonCount = 4;
         black=[UIColor colorWithRed:0.35 green:0.35 blue:0.35 alpha:1];
         buttonArray = [[NSMutableArray alloc]initWithCapacity:4];
         light = YiBlue;

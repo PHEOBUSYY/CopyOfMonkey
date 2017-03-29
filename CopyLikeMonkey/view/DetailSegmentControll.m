@@ -18,39 +18,32 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        _buttonArray = [[NSMutableArray alloc] initWithCapacity:3];
-        _labelTopArray = [[NSMutableArray alloc] initWithCapacity:3];
-        _labelBottomArray = [[NSMutableArray alloc] initWithCapacity:3];
-        float avgWidth = ScreenWidth/3;
-        float topSpace = 5;
-        float labelHeight = 25;
-        float labelWidth = avgWidth - 5;
-        float indicateHeight = 3;
-        float indicateWeight = 50;
-        float h = topSpace + labelHeight + topSpace + labelHeight + topSpace + indicateHeight;
-        self.button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, avgWidth, h)];
-        self.button2 = [[UIButton alloc] initWithFrame:CGRectMake(avgWidth, 0, ScreenWidth/3, h)];
-        self.button3 = [[UIButton alloc] initWithFrame:CGRectMake(avgWidth*2, 0, ScreenWidth/3, h)];
+        self.buttonCount = 3;
+        self.showTopLabel = YES;
         
-        self.label1Top = [[UILabel alloc] initWithFrame:CGRectMake((avgWidth - labelWidth)/2, topSpace, labelWidth, labelHeight)];
-        self.label1Bottom = [[UILabel alloc] initWithFrame:CGRectMake((avgWidth - labelWidth)/2, topSpace+labelHeight+topSpace, labelWidth, labelHeight)];
-//        self.label1Top.text = @"135";
+        _buttonArray = [[NSMutableArray alloc] initWithCapacity:self.buttonCount];
+        _labelTopArray = [[NSMutableArray alloc] initWithCapacity:self.buttonCount];
+        _labelBottomArray = [[NSMutableArray alloc] initWithCapacity:self.buttonCount];
+        self.button1 = [UIButton new];
+        self.button2 = [UIButton new];
+        self.button3= [UIButton new];
+        
+        self.label1Top = [UILabel new];
+        self.label1Bottom = [UILabel new] ;
         self.label1Bottom.text = @"Repositories";
         
         
-        self.label2Top = [[UILabel alloc] initWithFrame:CGRectMake((avgWidth - labelWidth)/2+avgWidth, topSpace, labelWidth, labelHeight)];
-        self.label2Bottom = [[UILabel alloc] initWithFrame:CGRectMake((avgWidth - labelWidth)/2 +avgWidth, topSpace+labelHeight+topSpace, labelWidth, labelHeight)];
-//        self.label2Top.text = @"135";
+        self.label2Top = [UILabel new];
+        self.label2Bottom = [UILabel new] ;
         self.label2Bottom.text = @"Following";
         
         
-        self.label3Top = [[UILabel alloc] initWithFrame:CGRectMake((avgWidth - labelWidth)/2+avgWidth*2, topSpace, labelWidth, labelHeight)];
-        self.label3Bottom = [[UILabel alloc] initWithFrame:CGRectMake((avgWidth - labelWidth)/2 + avgWidth*2, topSpace+labelHeight+topSpace, labelWidth, labelHeight)];
-//        self.label3Top.text = @"135";
+        self.label3Top = [UILabel new];
+        self.label3Bottom = [UILabel new] ;
         self.label3Bottom.text = @"Follower";
         
         
-        self.indicateView = [[UIView alloc] initWithFrame:CGRectMake((avgWidth - indicateWeight)/2, topSpace + labelHeight + topSpace + labelHeight +topSpace, indicateWeight, indicateHeight)];
+        self.indicateView = [UIView new];
         self.indicateView.backgroundColor = YiBlue;
         [self.buttonArray addObject:self.button1];
         [self.buttonArray addObject:self.button2];
@@ -65,6 +58,7 @@
         [self.labelBottomArray addObject:_label2Bottom];
         [self.labelBottomArray addObject:_label3Bottom];
         
+        
         [self.button1 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.button2 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
         [self.button3 addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -76,7 +70,6 @@
         self.label1Bottom.textAlignment = NSTextAlignmentCenter;
         self.label2Bottom.textAlignment = NSTextAlignmentCenter;
         self.label3Bottom.textAlignment = NSTextAlignmentCenter;
-       
         
         
         [self addSubview:self.button1];
@@ -98,10 +91,44 @@
     }
     return self;
 }
+-(void)layoutSubviews
+{
+    NSLog(@"enter layoutSubViews");
+    float avgWidth = ScreenWidth/self.buttonCount;
+    float topSpace = 5;
+    float labelHeight = 25;
+    float labelWidth = avgWidth - 5;
+    float indicateHeight = 3;
+    float indicateWeight = 50;
+    
+    float h = topSpace + labelHeight + topSpace + indicateHeight;
+    if (self.showTopLabel) {
+        h = topSpace + labelHeight + topSpace + labelHeight + topSpace + indicateHeight;
+    }
+    self.button1.frame = CGRectMake(0, 0, avgWidth, h);
+    self.button2.frame = CGRectMake(avgWidth, 0, ScreenWidth/self.buttonCount, h);
+    self.button3.frame =CGRectMake(avgWidth*2, 0, ScreenWidth/self.buttonCount, h);
+    if (self.showTopLabel) {
+        self.label1Top.frame = CGRectMake((avgWidth - labelWidth)/2, topSpace, labelWidth, labelHeight);
+        self.label2Top.frame = CGRectMake((avgWidth - labelWidth)/2+avgWidth, topSpace, labelWidth, labelHeight);
+        self.label3Top.frame = CGRectMake((avgWidth - labelWidth)/2+avgWidth*2, topSpace, labelWidth, labelHeight);
+    }
+    float bottom2topSpace = topSpace;
+    if (self.showTopLabel) {
+        bottom2topSpace = topSpace+labelHeight+topSpace;
+    }
+    self.label1Bottom.frame = CGRectMake((avgWidth - labelWidth)/2, bottom2topSpace, labelWidth, labelHeight);
+    self.label2Bottom.frame = CGRectMake((avgWidth - labelWidth)/2 +avgWidth,bottom2topSpace, labelWidth, labelHeight);
+    self.label3Bottom.frame = CGRectMake((avgWidth - labelWidth)/2 + avgWidth*2,bottom2topSpace, labelWidth, labelHeight);
+    
+    float indicate2TopSpace = bottom2topSpace + labelHeight + topSpace;
+    CGRect frame = CGRectMake((avgWidth - indicateWeight)/2+ _currentIndex * (ScreenWidth/self.buttonCount),indicate2TopSpace, indicateWeight, indicateHeight);
+    self.indicateView.frame = frame;
+}
 -(void)clickButton:(UIButton *)button
 {
     int clickIndex = -1;
-    for (int index=0; index < [_buttonArray count]; index ++) {
+    for (int index=0; index < self.buttonCount; index ++) {
         if ([_buttonArray[index] isEqual:button]) {
             clickIndex = index;
             self.labelTopArray[index].textColor = YiBlue;
@@ -115,10 +142,10 @@
     if (clickIndex == self.currentIndex) {
         return;
     }
-    //在这里改变地下的滑块
+    //在这里改变底下的滑块
     [UIView animateWithDuration:0.3 animations:^{
         CGRect frame = self.indicateView.frame;
-        frame.origin.x += (ScreenWidth/3) * (clickIndex - _currentIndex);
+        frame.origin.x += (ScreenWidth/self.buttonCount) * (clickIndex - _currentIndex);
         self.indicateView.frame = frame;
     }];
     _currentIndex = clickIndex;

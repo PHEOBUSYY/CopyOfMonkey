@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UserModel.h"
 @interface FirstTableViewCell : UITableViewCell
 @property (strong,nonatomic) UILabel *rankLabel;
 @property (strong,nonatomic) UIImageView *avatar;
 @property (strong,nonatomic) UILabel *title;
 @property (strong,nonatomic) UILabel *detail;
+-(void) showViewByModel:(UserModel *)model withIndex:(int)index;
 @end

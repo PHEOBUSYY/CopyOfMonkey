@@ -71,7 +71,7 @@
     NSString *avatar = model.avatar_url;
     [cell.avatar sd_setImageWithURL:[NSURL URLWithString:avatar]];
     cell.title.text = [NSString stringWithFormat:@"%@",model.login];
-    cell.rankLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row + 1];
+    cell.rankLabel.text = [NSString stringWithFormat:@"%d",(int)(indexPath.row + 1)];
     
     return cell;
 }

@@ -77,5 +77,10 @@
 
     // Configure the view for the selected state
 }
-
+-(void)showViewByModel:(UserModel *)model withIndex:(int)index
+{
+    [self.avatar sd_setImageWithURL:[NSURL URLWithString:model.avatar_url]];
+    self.title.text = [NSString stringWithFormat:@"%@",model.login];
+    self.rankLabel.text = [NSString stringWithFormat:@"%d",index];
+}
 @end
