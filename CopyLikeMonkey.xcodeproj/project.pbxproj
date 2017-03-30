@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0A1443BB1F747BD408D696F2 /* libPods-CopyLikeMonkey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C195B7A651B626E39AD8FD6B /* libPods-CopyLikeMonkey.a */; };
+		A00B47591E8BA90500A275B6 /* GithubRankingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00B47581E8BA90500A275B6 /* GithubRankingViewController.m */; };
+		A00B475C1E8BAA2900A275B6 /* Github-awardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00B475B1E8BAA2900A275B6 /* Github-awardsViewController.m */; };
 		A0172EA41E77B63C007A94BC /* SecondTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0172EA31E77B63C007A94BC /* SecondTableViewController.m */; };
 		A0172EA71E791355007A94BC /* RepoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0172EA61E791355007A94BC /* RepoTableViewCell.m */; };
 		A0172EAD1E791BC0007A94BC /* RepositoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0172EAC1E791BC0007A94BC /* RepositoryModel.m */; };
@@ -35,10 +37,10 @@
 		A0A3DC641E6E8EF900733D95 /* CopyLikeMonkey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC621E6E8EF900733D95 /* CopyLikeMonkey.xcdatamodeld */; };
 		A0A3DC661E6E8EF900733D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0A3DC651E6E8EF900733D95 /* Assets.xcassets */; };
 		A0A3DC691E6E8EF900733D95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0A3DC671E6E8EF900733D95 /* LaunchScreen.storyboard */; };
-		A0A3DC7E1E6E995000733D95 /* MainController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC7D1E6E995000733D95 /* MainController.m */; };
 		A0A3DC851E6EDB5200733D95 /* FirstTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC841E6EDB5200733D95 /* FirstTableViewController.m */; };
 		A0A3DC891E6F8A9000733D95 /* FirstTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A0A3DC881E6F8A9000733D95 /* FirstTableViewCell.m */; };
 		A0BF979A1E89F10200365934 /* ShowCaseDetailControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */; };
+		A0E693071E8C9B4600E7CF75 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A0E693061E8C9B4600E7CF75 /* WebViewController.m */; };
 		A0FEC5951E6FDEE800D90D34 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5941E6FDEE800D90D34 /* TestObject.m */; };
 		A0FEC5981E6FF10600D90D34 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5971E6FF10600D90D34 /* UserModel.m */; };
 		A0FEC59F1E6FF2BF00D90D34 /* NSObject+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC59C1E6FF2BF00D90D34 /* NSObject+HUD.m */; };
@@ -52,6 +54,10 @@
 /* Begin PBXFileReference section */
 		4D560BD65BB81934912069EF /* Pods-CopyLikeMonkey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopyLikeMonkey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CopyLikeMonkey/Pods-CopyLikeMonkey.debug.xcconfig"; sourceTree = "<group>"; };
 		64EFD80F85AFCDF5D5D37FB2 /* Pods-CopyLikeMonkey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopyLikeMonkey.release.xcconfig"; path = "Pods/Target Support Files/Pods-CopyLikeMonkey/Pods-CopyLikeMonkey.release.xcconfig"; sourceTree = "<group>"; };
+		A00B47571E8BA90500A275B6 /* GithubRankingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GithubRankingViewController.h; sourceTree = "<group>"; };
+		A00B47581E8BA90500A275B6 /* GithubRankingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GithubRankingViewController.m; sourceTree = "<group>"; };
+		A00B475A1E8BAA2900A275B6 /* Github-awardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Github-awardsViewController.h"; sourceTree = "<group>"; };
+		A00B475B1E8BAA2900A275B6 /* Github-awardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Github-awardsViewController.m"; sourceTree = "<group>"; };
 		A0172EA21E77B63C007A94BC /* SecondTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTableViewController.h; sourceTree = "<group>"; };
 		A0172EA31E77B63C007A94BC /* SecondTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewController.m; sourceTree = "<group>"; };
 		A0172EA51E791355007A94BC /* RepoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepoTableViewCell.h; sourceTree = "<group>"; };
@@ -103,8 +109,6 @@
 		A0A3DC651E6E8EF900733D95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0A3DC681E6E8EF900733D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0A3DC6A1E6E8EF900733D95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A0A3DC7C1E6E995000733D95 /* MainController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainController.h; sourceTree = "<group>"; };
-		A0A3DC7D1E6E995000733D95 /* MainController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainController.m; sourceTree = "<group>"; };
 		A0A3DC831E6EDB5200733D95 /* FirstTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewController.h; sourceTree = "<group>"; };
 		A0A3DC841E6EDB5200733D95 /* FirstTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTableViewController.m; sourceTree = "<group>"; };
 		A0A3DC871E6F8A9000733D95 /* FirstTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTableViewCell.h; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 		A0A3DC8D1E6F8EEB00733D95 /* public.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = public.h; sourceTree = "<group>"; };
 		A0BF97981E89F10200365934 /* ShowCaseDetailControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowCaseDetailControllerViewController.h; sourceTree = "<group>"; };
 		A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseDetailControllerViewController.m; sourceTree = "<group>"; };
+		A0E693051E8C9B4600E7CF75 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		A0E693061E8C9B4600E7CF75 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		A0FEC5931E6FDEE800D90D34 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestObject.h; sourceTree = "<group>"; };
 		A0FEC5941E6FDEE800D90D34 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestObject.m; sourceTree = "<group>"; };
 		A0FEC5961E6FF10600D90D34 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -150,6 +156,89 @@
 				64EFD80F85AFCDF5D5D37FB2 /* Pods-CopyLikeMonkey.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A00B47501E8BA85200A275B6 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				A0172EAE1E7A1A27007A94BC /* ThirdViewController.h */,
+				A0172EAF1E7A1A27007A94BC /* ThirdViewController.m */,
+				A0172EB11E7A293D007A94BC /* FourthViewController.h */,
+				A0172EB21E7A293D007A94BC /* FourthViewController.m */,
+				A0A3DC831E6EDB5200733D95 /* FirstTableViewController.h */,
+				A0A3DC841E6EDB5200733D95 /* FirstTableViewController.m */,
+				A0172EA21E77B63C007A94BC /* SecondTableViewController.h */,
+				A0172EA31E77B63C007A94BC /* SecondTableViewController.m */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		A00B47511E8BA87600A275B6 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				A018E86C1E83AA5000359796 /* BaseRequestViewController.h */,
+				A018E86D1E83AA5000359796 /* BaseRequestViewController.m */,
+				A0E693051E8C9B4600E7CF75 /* WebViewController.h */,
+				A0E693061E8C9B4600E7CF75 /* WebViewController.m */,
+			);
+			name = base;
+			sourceTree = "<group>";
+		};
+		A00B47521E8BA88B00A275B6 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				A0172EB41E7A5AFA007A94BC /* RankDetailViewController.h */,
+				A0172EB51E7A5AFA007A94BC /* RankDetailViewController.m */,
+			);
+			name = user;
+			sourceTree = "<group>";
+		};
+		A00B47531E8BA89A00A275B6 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				A07A7EB01E76715900AA893B /* ContryTableViewController.h */,
+				A07A7EB11E76715900AA893B /* ContryTableViewController.m */,
+				A07A7EAA1E766E0C00AA893B /* CityViewController.h */,
+				A07A7EAB1E766E0C00AA893B /* CityViewController.m */,
+				A07A7EAD1E766E1B00AA893B /* LanguageViewController.h */,
+				A07A7EAE1E766E1B00AA893B /* LanguageViewController.m */,
+			);
+			name = config;
+			sourceTree = "<group>";
+		};
+		A00B47541E8BA8AD00A275B6 /* repo */ = {
+			isa = PBXGroup;
+			children = (
+				A018E8631E80FE9900359796 /* RepositoriesDetailControllerViewController.h */,
+				A018E8641E80FE9900359796 /* RepositoriesDetailControllerViewController.m */,
+			);
+			name = repo;
+			sourceTree = "<group>";
+		};
+		A00B47551E8BA8B200A275B6 /* discovery */ = {
+			isa = PBXGroup;
+			children = (
+				A018E8691E835E1D00359796 /* TrendingViewController.h */,
+				A018E86A1E835E1D00359796 /* TrendingViewController.m */,
+				A018E86F1E83ACCD00359796 /* ShowCaseViewController.h */,
+				A018E8701E83ACCD00359796 /* ShowCaseViewController.m */,
+				A0BF97981E89F10200365934 /* ShowCaseDetailControllerViewController.h */,
+				A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */,
+				A07331B11E8B3D5000031A35 /* SearchViewController.h */,
+				A07331B21E8B3D5000031A35 /* SearchViewController.m */,
+				A00B47571E8BA90500A275B6 /* GithubRankingViewController.h */,
+				A00B47581E8BA90500A275B6 /* GithubRankingViewController.m */,
+				A00B475A1E8BAA2900A275B6 /* Github-awardsViewController.h */,
+				A00B475B1E8BAA2900A275B6 /* Github-awardsViewController.m */,
+			);
+			name = discovery;
+			sourceTree = "<group>";
+		};
+		A00B47561E8BA8BF00A275B6 /* more */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = more;
 			sourceTree = "<group>";
 		};
 		A0800BA01E7AB7070020CB3F /* net */ = {
@@ -233,36 +322,13 @@
 		A0A3DC7B1E6E991000733D95 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				A07A7EB01E76715900AA893B /* ContryTableViewController.h */,
-				A07A7EB11E76715900AA893B /* ContryTableViewController.m */,
-				A0A3DC7C1E6E995000733D95 /* MainController.h */,
-				A0A3DC7D1E6E995000733D95 /* MainController.m */,
-				A0A3DC831E6EDB5200733D95 /* FirstTableViewController.h */,
-				A0A3DC841E6EDB5200733D95 /* FirstTableViewController.m */,
-				A0172EA21E77B63C007A94BC /* SecondTableViewController.h */,
-				A0172EA31E77B63C007A94BC /* SecondTableViewController.m */,
-				A07A7EAA1E766E0C00AA893B /* CityViewController.h */,
-				A07A7EAB1E766E0C00AA893B /* CityViewController.m */,
-				A07A7EAD1E766E1B00AA893B /* LanguageViewController.h */,
-				A07A7EAE1E766E1B00AA893B /* LanguageViewController.m */,
-				A0172EAE1E7A1A27007A94BC /* ThirdViewController.h */,
-				A0172EAF1E7A1A27007A94BC /* ThirdViewController.m */,
-				A0172EB11E7A293D007A94BC /* FourthViewController.h */,
-				A0172EB21E7A293D007A94BC /* FourthViewController.m */,
-				A0172EB41E7A5AFA007A94BC /* RankDetailViewController.h */,
-				A0172EB51E7A5AFA007A94BC /* RankDetailViewController.m */,
-				A018E8631E80FE9900359796 /* RepositoriesDetailControllerViewController.h */,
-				A018E8641E80FE9900359796 /* RepositoriesDetailControllerViewController.m */,
-				A018E8691E835E1D00359796 /* TrendingViewController.h */,
-				A018E86A1E835E1D00359796 /* TrendingViewController.m */,
-				A018E86C1E83AA5000359796 /* BaseRequestViewController.h */,
-				A018E86D1E83AA5000359796 /* BaseRequestViewController.m */,
-				A018E86F1E83ACCD00359796 /* ShowCaseViewController.h */,
-				A018E8701E83ACCD00359796 /* ShowCaseViewController.m */,
-				A0BF97981E89F10200365934 /* ShowCaseDetailControllerViewController.h */,
-				A0BF97991E89F10200365934 /* ShowCaseDetailControllerViewController.m */,
-				A07331B11E8B3D5000031A35 /* SearchViewController.h */,
-				A07331B21E8B3D5000031A35 /* SearchViewController.m */,
+				A00B47561E8BA8BF00A275B6 /* more */,
+				A00B47551E8BA8B200A275B6 /* discovery */,
+				A00B47541E8BA8AD00A275B6 /* repo */,
+				A00B47531E8BA89A00A275B6 /* config */,
+				A00B47521E8BA88B00A275B6 /* user */,
+				A00B47511E8BA87600A275B6 /* base */,
+				A00B47501E8BA85200A275B6 /* main */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -465,6 +531,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0BF979A1E89F10200365934 /* ShowCaseDetailControllerViewController.m in Sources */,
+				A0E693071E8C9B4600E7CF75 /* WebViewController.m in Sources */,
 				A0172EB31E7A293D007A94BC /* FourthViewController.m in Sources */,
 				A0A3DC851E6EDB5200733D95 /* FirstTableViewController.m in Sources */,
 				A018E8681E811BFA00359796 /* HttpHandler.m in Sources */,
@@ -482,8 +549,10 @@
 				A0FEC5AA1E70DFE000D90D34 /* YiRefreshHeader.m in Sources */,
 				A0A3DC891E6F8A9000733D95 /* FirstTableViewCell.m in Sources */,
 				A0172EA41E77B63C007A94BC /* SecondTableViewController.m in Sources */,
+				A00B47591E8BA90500A275B6 /* GithubRankingViewController.m in Sources */,
 				A0172EAD1E791BC0007A94BC /* RepositoryModel.m in Sources */,
 				A018E86B1E835E1D00359796 /* TrendingViewController.m in Sources */,
+				A00B475C1E8BAA2900A275B6 /* Github-awardsViewController.m in Sources */,
 				A0A3DC5B1E6E8EF900733D95 /* AppDelegate.m in Sources */,
 				A018E8771E83BAB500359796 /* ShowCaseViewCellTableViewCell.m in Sources */,
 				A07A7EAC1E766E0C00AA893B /* CityViewController.m in Sources */,
@@ -493,7 +562,6 @@
 				A0A3DC641E6E8EF900733D95 /* CopyLikeMonkey.xcdatamodeld in Sources */,
 				A07331B31E8B3D5000031A35 /* SearchViewController.m in Sources */,
 				A0FEC5981E6FF10600D90D34 /* UserModel.m in Sources */,
-				A0A3DC7E1E6E995000733D95 /* MainController.m in Sources */,
 				A07A7EB21E76715900AA893B /* ContryTableViewController.m in Sources */,
 				A0172EB91E7A7C0A007A94BC /* DetailSegmentControll.m in Sources */,
 				A0FEC5AD1E71320000D90D34 /* HeaderSegmentControl.m in Sources */,

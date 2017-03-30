@@ -25,16 +25,24 @@
         [self.header beginRefreshing];
     }
 }
+-(Boolean)tableViewStyleIsGroup
+{
+    return NO;
+}
 -(Boolean)needFristUpdate
 {
     return YES;
 }
 - (void)initMainView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64) style:UITableViewStylePlain];
+    UITableViewStyle style = UITableViewStylePlain;
+    if ([self tableViewStyleIsGroup]) {
+        style = UITableViewStyleGrouped;
+    }
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64) style:style];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.backgroundColor = [UIColor whiteColor];
+//    self.tableView.backgroundColor = [UIColor whiteColor];
     //默认生效
 //    self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;

@@ -22,5 +22,6 @@
 -(Boolean)needConfigHeader;
 -(Boolean)needConfigFooter;
 -(Boolean)needFristUpdate;
+-(Boolean)tableViewStyleIsGroup;
 
 @end

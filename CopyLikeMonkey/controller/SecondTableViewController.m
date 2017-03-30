@@ -36,7 +36,7 @@
 {
     NSString *language = [[NSUserDefaults standardUserDefaults] objectForKey:@"language"];
     if (language == nil) {
-        language = @"repo";
+        language = @"java";
     }
     self.navigationItem.title = language;
     
@@ -87,6 +87,9 @@
 -(void)sendRequest
 {
     NSString *language = [[NSUserDefaults standardUserDefaults] objectForKey:@"language"];
+    if (!language) {
+        language = @"java";
+    }
     NSString *q = [NSString stringWithFormat: @"language:%@",language];
     
     NSString *urlStr = [NSString stringWithFormat:@"https://api.github.com/search/repositories?q=%@&page=%d&sort=stars",q,_page];;

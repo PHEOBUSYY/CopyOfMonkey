@@ -10,6 +10,8 @@
 #import "TrendingViewController.h"
 #import "ShowCaseViewController.h"
 #import "SearchViewController.h"
+#import "GithubRankingViewController.h"
+#import "Github-awardsViewController.h"
 @interface ThirdViewController () <UITableViewDelegate,UITableViewDataSource>
 @property (strong,nonatomic) UITableView *tableView;
 @end
@@ -81,6 +83,12 @@
     } else if (indexPath.section == 3){
         SearchViewController *search = [[SearchViewController alloc] init];
         [self.navigationController pushViewController:search animated:YES];
+    } else if(indexPath.section == 4){
+        GithubRankingViewController *rank = [[GithubRankingViewController alloc]init];
+        [self.navigationController pushViewController:rank animated:YES];
+    } else if(indexPath.section == 5){
+        Github_awardsViewController *award = [[Github_awardsViewController alloc] init];
+        [self.navigationController pushViewController:award animated:YES];
     }
 }
 

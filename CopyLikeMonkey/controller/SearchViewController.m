@@ -71,7 +71,7 @@
             }
         }else {
             if (strongSelf.data2==nil ||[strongSelf.data2 count] == 0) {
-                strongSelf.data2 = [[NSMutableArray alloc]initWithCapacity:0];
+                strongSelf.data1 = [[NSMutableArray alloc]initWithCapacity:0];
                 [strongSelf.tableView reloadData];
  
                 [strongSelf.header beginRefreshing];
