@@ -25,6 +25,11 @@
 		A018E8741E83AFC300359796 /* ShowcasesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8731E83AFC300359796 /* ShowcasesModel.m */; };
 		A018E8771E83BAB500359796 /* ShowCaseViewCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A018E8761E83BAB500359796 /* ShowCaseViewCellTableViewCell.m */; };
 		A05832001E72396E0076E130 /* UIRankDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A05831FF1E72396E0076E130 /* UIRankDataSource.m */; };
+		A05DB5FE1E8DE531009CFC38 /* LoginWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05DB5FD1E8DE531009CFC38 /* LoginWebViewController.m */; };
+		A05DC1A11E8E3A17009CFC38 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = A05DC1A01E8E3A17009CFC38 /* config.xml */; };
+		A05DC1E91E8E490B009CFC38 /* Summer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A05DB5FF1E8E35C4009CFC38 /* Summer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A05DC1EC1E8E4B03009CFC38 /* www in Resources */ = {isa = PBXBuildFile; fileRef = A05DC1EB1E8E4B03009CFC38 /* www */; };
+		A05DC1EF1E8F7B42009CFC38 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A05DC1EE1E8F7B42009CFC38 /* AboutViewController.m */; };
 		A07331B31E8B3D5000031A35 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07331B21E8B3D5000031A35 /* SearchViewController.m */; };
 		A07A7EAC1E766E0C00AA893B /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A7EAB1E766E0C00AA893B /* CityViewController.m */; };
 		A07A7EAF1E766E1B00AA893B /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07A7EAE1E766E1B00AA893B /* LanguageViewController.m */; };
@@ -50,6 +55,20 @@
 		A0FEC5AA1E70DFE000D90D34 /* YiRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5A71E70DFE000D90D34 /* YiRefreshHeader.m */; };
 		A0FEC5AD1E71320000D90D34 /* HeaderSegmentControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A0FEC5AC1E7131FF00D90D34 /* HeaderSegmentControl.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A05DC1EA1E8E490B009CFC38 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A05DC1E91E8E490B009CFC38 /* Summer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4D560BD65BB81934912069EF /* Pods-CopyLikeMonkey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CopyLikeMonkey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CopyLikeMonkey/Pods-CopyLikeMonkey.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +107,13 @@
 		A018E8761E83BAB500359796 /* ShowCaseViewCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowCaseViewCellTableViewCell.m; sourceTree = "<group>"; };
 		A05831FE1E72396E0076E130 /* UIRankDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIRankDataSource.h; sourceTree = "<group>"; };
 		A05831FF1E72396E0076E130 /* UIRankDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIRankDataSource.m; sourceTree = "<group>"; };
+		A05DB5FC1E8DE531009CFC38 /* LoginWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginWebViewController.h; sourceTree = "<group>"; };
+		A05DB5FD1E8DE531009CFC38 /* LoginWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginWebViewController.m; sourceTree = "<group>"; };
+		A05DB5FF1E8E35C4009CFC38 /* Summer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Summer.framework; path = CopyLikeMonkey/Summer.framework; sourceTree = "<group>"; };
+		A05DC1A01E8E3A17009CFC38 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = CopyLikeMonkey/config.xml; sourceTree = "<group>"; };
+		A05DC1EB1E8E4B03009CFC38 /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = CopyLikeMonkey/www; sourceTree = "<group>"; };
+		A05DC1ED1E8F7B42009CFC38 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		A05DC1EE1E8F7B42009CFC38 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		A07331B11E8B3D5000031A35 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		A07331B21E8B3D5000031A35 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		A07A7EAA1E766E0C00AA893B /* CityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityViewController.h; sourceTree = "<group>"; };
@@ -237,8 +263,26 @@
 		A00B47561E8BA8BF00A275B6 /* more */ = {
 			isa = PBXGroup;
 			children = (
+				A05DC1ED1E8F7B42009CFC38 /* AboutViewController.h */,
+				A05DC1EE1E8F7B42009CFC38 /* AboutViewController.m */,
 			);
 			name = more;
+			sourceTree = "<group>";
+		};
+		A05DB5FB1E8DE50F009CFC38 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				A05DB5FC1E8DE531009CFC38 /* LoginWebViewController.h */,
+				A05DB5FD1E8DE531009CFC38 /* LoginWebViewController.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
+		A05DB6011E8E3623009CFC38 /* iuap */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iuap;
 			sourceTree = "<group>";
 		};
 		A0800BA01E7AB7070020CB3F /* net */ = {
@@ -255,7 +299,10 @@
 		A0A3DC4A1E6E8EF900733D95 = {
 			isa = PBXGroup;
 			children = (
+				A05DC1EB1E8E4B03009CFC38 /* www */,
+				A05DC1A01E8E3A17009CFC38 /* config.xml */,
 				A0A3DC8B1E6F8E7400733D95 /* PrefixHeader.pch */,
+				A05DB5FF1E8E35C4009CFC38 /* Summer.framework */,
 				A0A3DC551E6E8EF900733D95 /* CopyLikeMonkey */,
 				A0A3DC541E6E8EF900733D95 /* Products */,
 				9B2C1967DC119C961DFF4200 /* Pods */,
@@ -322,6 +369,8 @@
 		A0A3DC7B1E6E991000733D95 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A05DB6011E8E3623009CFC38 /* iuap */,
+				A05DB5FB1E8DE50F009CFC38 /* login */,
 				A00B47561E8BA8BF00A275B6 /* more */,
 				A00B47551E8BA8B200A275B6 /* discovery */,
 				A00B47541E8BA8AD00A275B6 /* repo */,
@@ -419,6 +468,7 @@
 				A0A3DC511E6E8EF900733D95 /* Resources */,
 				D6560F55247894374744A389 /* [CP] Embed Pods Frameworks */,
 				83EE4F8D3F6A2C98F45F4606 /* [CP] Copy Pods Resources */,
+				A05DC1EA1E8E490B009CFC38 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -468,9 +518,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05DC1EC1E8E4B03009CFC38 /* www in Resources */,
 				A0FEC5A81E70DFE000D90D34 /* down@2x.png in Resources */,
 				A0A3DC691E6E8EF900733D95 /* LaunchScreen.storyboard in Resources */,
 				A0A3DC661E6E8EF900733D95 /* Assets.xcassets in Resources */,
+				A05DC1A11E8E3A17009CFC38 /* config.xml in Resources */,
 				A0A3DC611E6E8EF900733D95 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +606,7 @@
 				A018E86B1E835E1D00359796 /* TrendingViewController.m in Sources */,
 				A00B475C1E8BAA2900A275B6 /* Github-awardsViewController.m in Sources */,
 				A0A3DC5B1E6E8EF900733D95 /* AppDelegate.m in Sources */,
+				A05DC1EF1E8F7B42009CFC38 /* AboutViewController.m in Sources */,
 				A018E8771E83BAB500359796 /* ShowCaseViewCellTableViewCell.m in Sources */,
 				A07A7EAC1E766E0C00AA893B /* CityViewController.m in Sources */,
 				A018E86E1E83AA5000359796 /* BaseRequestViewController.m in Sources */,
@@ -561,6 +614,7 @@
 				A0172EB61E7A5AFA007A94BC /* RankDetailViewController.m in Sources */,
 				A0A3DC641E6E8EF900733D95 /* CopyLikeMonkey.xcdatamodeld in Sources */,
 				A07331B31E8B3D5000031A35 /* SearchViewController.m in Sources */,
+				A05DB5FE1E8DE531009CFC38 /* LoginWebViewController.m in Sources */,
 				A0FEC5981E6FF10600D90D34 /* UserModel.m in Sources */,
 				A07A7EB21E76715900AA893B /* ContryTableViewController.m in Sources */,
 				A0172EB91E7A7C0A007A94BC /* DetailSegmentControll.m in Sources */,
@@ -595,6 +649,7 @@
 		A0A3DC6B1E6E8EF900733D95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -644,6 +699,7 @@
 		A0A3DC6C1E6E8EF900733D95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -690,6 +746,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 96W3CPVG99;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CopyLikeMonkey",
+				);
 				INFOPLIST_FILE = CopyLikeMonkey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -704,6 +764,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 96W3CPVG99;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CopyLikeMonkey",
+				);
 				INFOPLIST_FILE = CopyLikeMonkey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

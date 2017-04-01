@@ -14,5 +14,6 @@ typedef void(^errorBlock)(NSError * _Nonnull error);
 @interface HttpKit : NSObject
 +(nonnull id) sharedKit;
 -(void) doGet:(nonnull NSString *)urlString withParam:(nullable id)param withSucessBlock:(nullable sucessBlock)sucess withErroBlock:(nullable errorBlock)errorBock;
+-(void) doGetWithToken:(nonnull NSString *)urlString withParam:(nullable id)param withSucessBlock:(nullable sucessBlock)sucess withErroBlock:(nullable errorBlock)errorBock;
 -(void) doPost:(nonnull NSString *)urlString withParam:(nullable id)param withSucessBlock:(nullable sucessBlock)sucess withErroBlock:(nullable errorBlock)errorBlock;
 @end

@@ -36,7 +36,7 @@
                   moduleName = "CopyLikeMonkey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yanyi/develop/IOS_PROJECT/CopyLikeMonkey/CopyLikeMonkey/controller/FirstTableViewController.m"
-                  timestampString = "512373239.89053"
+                  timestampString = "512709247.24074"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "230"
@@ -51,7 +51,7 @@
                   moduleName = "CopyLikeMonkey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/yanyi/develop/IOS_PROJECT/CopyLikeMonkey/CopyLikeMonkey/controller/FirstTableViewController.m"
-                  timestampString = "512373239.891916"
+                  timestampString = "512709247.242439"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "231"
@@ -90,6 +90,54 @@
             startingLineNumber = "309"
             endingLineNumber = "309"
             landmarkName = "-getUserDetail"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RankDetailViewController getUserDetail]"
+                  moduleName = "CopyLikeMonkey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanyi/develop/IOS_PROJECT/CopyLikeMonkey/CopyLikeMonkey/controller/RankDetailViewController.m"
+                  timestampString = "512709247.249906"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "220">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__41-[RankDetailViewController getUserDetail]_block_invoke"
+                  moduleName = "CopyLikeMonkey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yanyi/develop/IOS_PROJECT/CopyLikeMonkey/CopyLikeMonkey/controller/RankDetailViewController.m"
+                  timestampString = "512709247.251409"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "310"
+                  endingLineNumber = "310"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CopyLikeMonkey/mokeykit/net/HttpKit.m"
+            timestampString = "512708984.158999"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-doGetWithToken:withParam:withSucessBlock:withErroBlock:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

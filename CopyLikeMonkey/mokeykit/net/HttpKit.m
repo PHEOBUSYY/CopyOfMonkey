@@ -43,8 +43,28 @@ static HttpKit *kit;
         errorBlock(error);
     }];
 }
+-(void)doGetWithToken:(NSString *)urlString withParam:(NSDictionary *)param withSucessBlock:(sucessBlock)sucess withErroBlock:(errorBlock)errorBlock
+{
+    NSString *url =[urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"`#%^{}\"[]|\\<> "].invertedSet];
+    
+    NSString *token = [[NSUserDefaults standardUserDefaults]objectForKey:@"token"];
+//    NSString *value = [NSString stringWithFormat:@"token %@",token];
+    url = [NSString stringWithFormat:@"%@?access_token=%@",url,token];
+    NSLog(@"url with token is  %@",url);
+//    [_manager.requestSerializer setValue:value forHTTPHeaderField:@"Authorization"];
+    [_manager GET:url parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        sucess(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"the request is error @%@",error);
+        errorBlock(error);
+    }];
+}
 -(void)doPost:(NSString *)urlString withParam:(NSDictionary *)param withSucessBlock:(sucessBlock)sucess withErroBlock:(errorBlock)errorBlock
 {
+    _manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    _manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [_manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     [_manager POST:urlString parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         sucess(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

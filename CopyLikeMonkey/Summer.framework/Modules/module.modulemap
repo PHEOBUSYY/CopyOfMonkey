@@ -1,0 +1,6 @@
+framework module Summer {
+  umbrella header "Summer.h"
+
+  export *
+  module * { export * }
+}

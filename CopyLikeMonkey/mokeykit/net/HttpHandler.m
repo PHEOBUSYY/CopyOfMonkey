@@ -63,4 +63,38 @@
     getString = [NSString stringWithFormat:getString,repoName,page];
     [[HttpKit sharedKit]doGet:getString withParam:nil withSucessBlock:sucess withErroBlock:error];
 }
++(NSString * )getSendGithubOauthUrl
+{
+    NSString *clientId = @"d6326c3ca0a8700c31fc";
+    NSString *redirectUrl = @"https://github.com/PHEOBUSYY/CopyOfMonkey";
+    NSString *getString = @"https://github.com/login/oauth/authorize?client_id=%@&scope=user,public_repo&state=copylikemonkey&redirect_uri=%@";
+    getString = [NSString stringWithFormat:getString,clientId,redirectUrl];
+    return getString;
+}
++ (void)sendGithubOauth:(NSString *)code onSucess:(sucessBlock)sucess onError:(errorBlock)error
+{
+    NSString * getUrl = @"https://github.com/login/oauth/access_token";
+    NSMutableDictionary *param = [[NSMutableDictionary alloc ]init];
+    
+    NSString *clientId = @"d6326c3ca0a8700c31fc";
+    NSString *redirectUrl = @"https://github.com/PHEOBUSYY/CopyOfMonkey";
+    NSString *clientScreat = @"ae60e186abbc3cfd65cbf10cd7fb81252c5c88d8";
+    NSString *state = @"copylikemonkey";
+    [param setValue:code forKey:@"code"];
+    [param setValue:clientId forKey:@"client_id"];
+    [param setValue:clientScreat forKey:@"client_secret"];
+    [param setValue:redirectUrl forKey:@"redirect_uri"];
+    [param setValue:state forKey:@"state"];
+    
+    [[HttpKit sharedKit]doPost:getUrl withParam:param withSucessBlock:sucess withErroBlock:error];
+}
++(void) getUserInfoWithToken:(sucessBlock)sucess onError:(errorBlock)errorBlock
+{
+     NSString * getUrl = @"https://api.github.com/user";
+    [[HttpKit sharedKit]doGetWithToken:getUrl withParam:nil withSucessBlock:^(id  _Nonnull responseObject) {
+        sucess(responseObject);
+    } withErroBlock:^(NSError * _Nonnull error) {
+        errorBlock(error);
+    }];
+}
 @end

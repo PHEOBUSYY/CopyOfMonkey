@@ -20,4 +20,7 @@
 + (void)getShowCaseDetail:(NSString *)caseName onSucess: (sucessBlock)sucess onError:(errorBlock)error;
 + (void)searchUser:(NSString *)userName withPage:(int)page onSucess:(sucessBlock)sucess onError:(errorBlock)error;
 + (void)searchRepo:(NSString *)repoName withPage:(int)page onSucess:(sucessBlock)sucess onError:(errorBlock)error;
++ (NSString *)getSendGithubOauthUrl;
++ (void)sendGithubOauth:(NSString *)code onSucess:(sucessBlock)sucess onError:(errorBlock)error;
++ (void)getUserInfoWithToken:(sucessBlock)sucess onError:(errorBlock)errorBlock;
 @end
